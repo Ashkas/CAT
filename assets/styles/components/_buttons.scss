@@ -1,0 +1,17 @@
+// UL class for containing buttons
+ul.cta_buttons {
+	
+	padding: 0px;
+	
+	li {
+		list-style-type: none;
+	}
+}
+
+.cta_button {
+	@include cta-button;	
+}
+
+.cta_button_alt {
+	@include cta-button-alt;	
+}

@@ -1,0 +1,23 @@
+.home_title {
+	
+	font-size: rem-calc(22px);
+	text-align: center;
+	
+	@include mappy-bp($tab) {
+		
+		font-size: rem-calc(30px);
+	}
+	
+	@include mappy-bp($desk) {
+		
+		font-size: rem-calc(38px);
+	}
+}
+
+.home {
+	
+	.main {
+		padding: 0px;
+	}
+}
+

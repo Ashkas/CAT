@@ -1,0 +1,26 @@
+.icon {
+	
+	position: relative;
+	z-index: 9999;
+	top: inherit;
+	left: inherit;
+	
+	@include mappy-bp($mobile-wide) {
+		
+		padding: 0px;
+	}
+}
+
+.menui {
+	
+	background: $darkgrey;
+}
+
+.mobilenav {
+	
+	font-family: $titleFont;
+	
+	a {
+		text-shadow: none;
+	}
+}

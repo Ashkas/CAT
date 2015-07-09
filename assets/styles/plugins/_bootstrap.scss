@@ -1,0 +1,17 @@
+.row {
+	margin-left: 0px;
+	max-width: none;
+	
+	[class*="col-"] {
+		
+		&:first-child {
+			
+			padding-left: 0px;
+		}
+		
+		&:nth-last-child(2) {
+			
+			padding-right: 0px;
+		}
+	}
+}

@@ -1,0 +1,77 @@
+.banner {
+	
+	padding: 0px;
+	position: relative;
+}
+
+.parralax_banner {
+	
+	margin-bottom: rem-calc(20px);
+	
+	@include mappy-bp($desk){
+		
+		margin-bottom: 0px;
+	}
+}
+
+.banner_cta {
+	
+	@include mappy-bp($tab){
+		position: absolute;
+		z-index: 98;
+		top: 40%;
+		left: 15%;
+		right: 15%;
+		//max-width: rem-calc(480px);
+	}
+	
+	.banner_tagline {
+		
+		text-align: center;
+		
+		@include mappy-bp($tab) {
+			
+			color: white;
+			text-shadow: 0px 1px 0px $darkgrey;
+		}
+		
+		@include mappy-bp($desk) {
+			
+			font-size: rem-calc(36px);
+		}
+	}
+	
+	ul.cta_buttons {
+		
+		padding: 0px;
+		text-align: center;
+		display: block;
+		
+		li {
+			list-style-type: none;
+			
+			&:last-child {
+				margin-top: rem-calc(20px);
+			}
+			
+			.cta_button, .cta_button_alt {
+				
+				padding: rem-calc(10px) rem-calc(5px);
+			}
+			
+			@include mappy-bp($tab) {
+				
+				display: inline-block;
+				width: 45%;
+				
+				&:first-child {
+					margin-right: 5%;
+				}	
+				
+				&:last-child {
+					margin-top: 0px;
+				}
+			}
+		}		
+	}
+}

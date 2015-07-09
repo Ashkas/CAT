@@ -1,0 +1,24 @@
+img {
+	
+	width: 100%;
+}
+
+.very_small_image {
+	
+	min-height: rem-calc(54px);
+	
+	img {
+		max-width: rem-calc(54px);
+		max-height: rem-calc(50px);
+	}
+}
+
+.small_image {
+	
+	width: 50%;
+	
+	@include mappy-bp($desk) {
+		
+		width: 35%;
+	}
+}

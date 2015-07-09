@@ -1,0 +1,64 @@
+.icon_block_row {
+	
+	p {
+		
+		line-height: 1.5em;
+	}
+	
+	.big_margin_bottom {
+		
+		margin-bottom: 0px;
+	}
+}
+
+.block_row {
+	@include flexbox;
+	@include flex-direction(column);
+	
+	.block_text {
+		order: 2;
+	}
+	.block_image {
+		order: 1;
+	}
+	
+	@include mappy-bp($tab) {
+		
+		display: block;
+		flex-direction: inherit;
+	}
+	
+	p {
+		
+		line-height: 1.5em;
+		
+		@include mappy-bp($desk) {
+			
+			font-size: rem-calc(18px);
+			line-height: 1.75em;
+		}
+	}
+	
+	h3, p {
+		
+		text-align: center;
+		
+		@include mappy-bp($tab) {
+			
+			text-align: left;
+		}
+	}
+	
+	h3.step_title {
+		
+		@include mappy-bp($tab) {
+			
+			font-size: rem-calc(26px);
+		}
+		
+		@include mappy-bp($desk) {
+			
+			font-size: rem-calc(32px);
+		}
+	}
+}

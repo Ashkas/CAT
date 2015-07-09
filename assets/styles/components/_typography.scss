@@ -1,0 +1,211 @@
+$titleFont: "gesta", Helvetica, Arial, sans-serif;
+$bodyFont: "adelle", Georgia, serif;
+
+
+/* Inspired by - http://typecast.com/blog/a-more-modern-scale-for-web-typography */
+
+html {
+	font-size: 100% !important;
+}
+
+body {
+	font-size: 100%;
+	background: white;
+	font-family: $bodyFont;
+	font-feature-settings: "kern";
+    font-kerning: normal;
+    font-variant-ligatures: common-ligatures;
+    text-rendering: optimizelegibility;
+    color: $darkgrey;
+}
+
+body, caption, th, td, input, textarea, select, option, legend, fieldset, h1, h2, h3, h4, h5, h6, p {
+	//font-size-adjust: 0.5;
+	margin: 0px;
+	padding: 0px;
+	text-align: left;
+	vertical-align: baseline;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+	font-family: $titleFont;
+	font-weight: 200;
+	margin: 0px;
+	padding: 0px;
+}
+
+h1.page_title {
+	font-family: $titleFont;
+	font-weight: 200;
+}
+
+h1.alt_2 {
+	font-family: $titleFont;
+}
+
+h1.body_font {
+	font-family: $bodyFont;
+}
+
+h2.alt {
+	margin-top: 0px;
+}
+
+p {
+	margin: 0px 0px rem-calc(10px) 0px;
+}
+
+br {
+	margin-bottom: rem-calc(10px);
+}
+
+strong {
+	font-weight: 700;
+}
+
+small.alt {
+	font-family: $titleFont;
+}
+
+a {
+	-webkit-transition: color 300ms ease-out !important;
+    -moz-transition: color 300ms ease-out !important;
+    -o-transition: color 300ms ease-out !important;
+    transition: color 300ms ease-out !important;
+	text-decoration: none;
+	
+	&:link, &:visited {
+		color: $main-colour;
+		text-shadow: 0px 1px 0px $verylightgrey;
+	}
+	
+	&:hover, &:focus {
+		color: $alt-colour;
+		text-decoration: underline;
+	}
+	
+	&.alt {
+		
+		&:link, &:visited {
+			color: $alt-colour;
+			text-shadow: 0px 1px 0px $verylightgrey;
+		}
+		
+		&:hover, &:focus {
+			color: $main-colour;
+		}
+	}
+	
+	&.alt_2 {
+		
+		&:link, &:visited {
+			color: $alt2-colour;
+		}
+		
+		&:hover, &:focus {
+			color: $main-colour;
+		}
+	}
+}
+
+dl {
+	
+	dt {
+		font-weight: 600;
+		margin: 0px;
+		padding: 0px;
+	}
+	
+	dd {
+		margin: 0px 0px rem-calc(15px);
+		padding: 0px;
+		
+		&:last-child {
+			margin: 0px;
+		}
+	}
+	
+	margin: 0px 0px rem-calc(10px);
+}
+
+
+ul {
+	
+	padding: 0px 0px rem-calc(10px) rem-calc(18px);
+	margin: 0px;
+	
+	li {
+		//list-style-image: url('../images/2014/bullet.svg');
+	}
+}
+
+time {
+	font-family: $titleFont;
+	font-size: 80%;
+	//line-height: 1.11111;
+	//@include font-size(14);
+	//font-style: italic;
+}
+
+#page {
+	font-size:rem-calc(17px);
+	/* equivalent to 16px */
+	line-height: 1.25em
+	/* equivalent to 20px */
+}
+
+.menu_font {
+	font-family: $titleFont;
+	text-transform: uppercase;
+}
+
+h1 {
+	font-size: rem-calc(32px);
+	/* 2x body copy size = 32px */
+	line-height: 1.25;
+	/* 45px / 36px */
+}
+
+h2, h1.alt, h1.home_intro {
+	font-size: rem-calc(26px);
+	/* 1.625x body copy size = 26px */
+	line-height: 1.15384615em;
+	/* 30px / 26px */
+}
+
+h3, h2.alt, .module h1.alt, h1.alt_2 {
+	font-size: rem-calc(22px);
+	/* 1.375x body copy size = 22px */
+	line-height: 1.13636364;
+	/* 25px / 22px */
+}
+
+h4, h3.alt, .module h2.alt {
+	font-family: $titleFont;
+	font-size: rem-calc(19px);
+	/* 1.125x body copy size = 18px */
+	line-height: 1.11111111;
+}
+
+p.alt {
+	font-size: rem-calc(20px);
+	line-height: 1.5em;
+}
+
+blockquote {
+	font-size: rem-calc(22px);
+	/* 20px / 16px */
+	line-height: 1.25;
+	/* 25px / 20px */
+	margin-top: rem-calc(30px) !important;
+	margin-bottom: rem-calc(30px) !important;
+	font-style: italic;
+	text-align: center;
+	
+	p {
+		
+		text-align: center;
+	}
+}
