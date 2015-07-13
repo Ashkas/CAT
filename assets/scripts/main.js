@@ -19,51 +19,85 @@
     'common': {
       init: function() {
 	     
-	      // Way point for sticking the CAT button in the header
-	      var _w = Math.max( $(window).width(), $(window).height() );
-	      var mobileView = (_w <= 750);
-	      var tabletView = (_w >= 751);
-	      
-	      //var breakpoint_small = 650;
-		  //var breakpoint_tab = 1040;
+	    // Function so window size check fires on resize event too
+	    // From: http://stackoverflow.com/questions/2854407/javascript-jquery-window-resize-how-to-fire-after-the-resize-is-completed
+	    
+	    var waitForFinalEvent = (function() {
+		  var timers = {};
+		  return function(callback, ms, uniqueId) {
+		    if (!uniqueId) {
+		      uniqueId = "Don't call this twice without a uniqueId";
+		    }
+		    if (timers[uniqueId]) {
+		      clearTimeout(timers[uniqueId]);
+		    }
+		    timers[uniqueId] = setTimeout(callback, ms);
+		  };
+		})();
+		
+		// Declare variables 
+		var _w = Math.max( $(window).width(), $(window).height() );
+        var mobileView = (_w <= 750);
+        var largeView = (_w >= 751);    
 		  
-		  var stick_container = $(".midbar");
-		  var header_container = $(".header");
+		var header_cta = $(".header_cta");
+		var midbar = $(".midbar");
+		var header_container = $(".header");
 			
-		  var top_spacing = 0;
-		  var waypoint_offset = 10;
-			
-		  //var scrollbar = (window.innerWidth-$(window).width());
-	      
-	      var waypoint = new Waypoint({		    
+		var top_spacing = 0;
+		var waypoint_offset = 1;
+		
+		//$('.midbar').scrollFix();
+		
+		//var scrollbar = (window.innerWidth-$(window).width());
+
+
+	    var header_waypoint_handler = new Waypoint({		    
 		      
 			element: document.getElementById('header_waypoint'),
-			handler: function(direction) {			  
-			
-				if (mobileView) {
-					if (direction === 'down') {
-					  $('div.header_cta').addClass('stick');
-					  $('div.header_hamburger_menu').addClass('stick');
-					}
-					if (direction === 'up') {
-					  $('div.header_cta').removeClass('stick');
-					  $('div.header_hamburger_menu').removeClass('stick');
+			handler: function(direction) {			  						
+				
+				function large_header_waypoint() {
+					if (largeView) {
+						if (direction === 'down') {
+							header_container.css({ 'height':midbar.outerHeight() });		
+							midbar.stop().addClass("stick").css("top",-midbar.outerHeight()).animate({"top":top_spacing});
+						}
+						if (direction === 'up') {
+							header_container.css({ 'height':'auto' });
+							midbar.removeClass("stick").css("top",midbar.outerHeight()+waypoint_offset).animate({"top":""});
+						
+						}
+						
 					}
 				}
 				
-				if (tabletView) {
-					
-					if (direction === 'down') {
-					   header_container.css({ 'height':stick_container.outerHeight() });		
-					   stick_container.stop().addClass("stick").css("top",-stick_container.outerHeight()).animate({"top":top_spacing});
-					}
-					if (direction === 'up') {
-						header_container.css({ 'height':'auto' });
-						stick_container.removeClass("stick").css("top",stick_container.outerHeight()+waypoint_offset).animate({"top":""});
-					
+
+				function mobile_header_waypoint() {
+					if (mobileView) {
+						
+						if (direction === 'down') {
+						  $('div.header_hamburger_menu').addClass('stick');
+						  header_container.css({ 'height':header_cta.outerHeight() });		
+						  header_cta.stop().addClass("stick").css("top",-header_cta.outerHeight()).animate({"top":top_spacing});
+						}
+						if (direction === 'up') {
+						  $('div.header_hamburger_menu').removeClass('stick');
+						  header_container.css({ 'height':'auto' });
+						  header_cta.removeClass("stick").css("top",header_cta.outerHeight()+waypoint_offset).animate({"top":""});
+						}
 					}
 				}
-			}
+
+				
+				$(window).resize(function() {
+				    waitForFinalEvent(function() {
+					    //header_waypoint();
+						large_header_waypoint();
+						mobile_header_waypoint();
+					}, 0);
+				}).resize();
+			},
 		});
 		
       },

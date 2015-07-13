@@ -72,36 +72,59 @@ header[role="banner"] {
 	
 	.midbar {
 		&.stick {
-			position: fixed;
-			z-index: 99;
-			top: 0px;
-			right: 0px;
-			left: 0px;
-			background: white;
-			background: rgba(255,255,255,0.9);
-			width: 100% !important;
-			//height: rem-calc(50px);
 			
-			.brand {
-				padding-top: rem-calc(5px);
-				padding-bottom: rem-calc(5px);
+			@include mappy-bp(max-width $tab) {
 				
-				img {
-					max-width: rem-calc(250px);
-				}
-			}
-			
-			.header_search {
-				
-				margin-top: 0px;
-			}
-			
-			.mobilenav {
-				
-				margin-top: rem-calc(13px);
+				position: fixed;
+			    top: 0;
+			    z-index: 101;
+			    width: 100%;
+			    background: white;
+			    background: rgba(255,255,255,0.95);
+			    
+			    .cta_button {
+				    margin-top: rem-calc(10px);
+				    margin-bottom: rem-calc(10px);
+				    max-width: rem-calc(240px);
+			    }
+			    
+			    .mobile_scroll_hide {
+				    
+				    visibility: hidden;
+				    display: none;
+			    }
 			}
 			
 			@include mappy-bp($tab) {
+				
+				position: fixed;
+				z-index: 99;
+				top: 0px;
+				right: 0px;
+				left: 0px;
+				background: white;
+				background: rgba(255,255,255,0.9);
+				width: 100% !important;
+				//height: rem-calc(50px);
+				
+				.brand {
+					padding-top: rem-calc(5px);
+					padding-bottom: rem-calc(5px);
+					
+					img {
+						max-width: rem-calc(250px);
+					}
+				}
+				
+				.header_search {
+					
+					margin-top: 0px;
+				}
+				
+				.mobilenav {
+					
+					margin-top: rem-calc(13px);
+				}
 				
 				.header_cta {
 					display: none;
@@ -179,6 +202,12 @@ header[role="banner"] {
 			z-index: 9999;
 			top: 0px;
 			right: 0px;
+			
+			@include mappy-bp($desk) {
+			
+				display: block;
+				visibility: visible;
+			}
 		}
 		
 		@include mappy-bp($mobile-wide) {
@@ -250,7 +279,7 @@ header[role="banner"] {
 		    }
 		}
 		
-		@include mappy-bp($tab) {
+		@include mappy-bp(750px) {
 			
 			display: none;
 			visibility: hidden;

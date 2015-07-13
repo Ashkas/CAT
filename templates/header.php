@@ -30,7 +30,7 @@
 	</div> <!-- topbar -->
 		
 	<div class="midbar">
-		<div class="container">
+		<div class="container mobile_scroll_hide">
 			<div class="row">
 				<div class="col-xs-9 brand_col">
 					<a class="brand" href="<?php echo $home_url; ?>">
@@ -82,8 +82,8 @@
 		
 		<div class="clearfix"></div>
 		
-	</div> <!-- midbar -->
-	
-	<span id="header_waypoint"></span>
+	</div> <!-- midbar -->	
 	
 </header>
+
+<span id="header_waypoint"></span>
