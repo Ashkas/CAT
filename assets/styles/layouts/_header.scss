@@ -2,13 +2,16 @@ header[role="banner"] {
 	
 	padding-bottom: rem-calc(10px);
 	background: white;
-	background: rgba(255,255,255,0.9);
 	position: relative;
 	z-index: 101;
 	
 	@include mappy-bp($tab) {
 		
 		padding-bottom: 0px;
+	}
+	
+	&.scroll {
+		background: rgba(255,255,255,0.95);
 	}
 	
 	.topbar {
@@ -87,7 +90,7 @@ header[role="banner"] {
 			    z-index: 101;
 			    width: 100%;
 			    background: white;
-			    background: rgba(255,255,255,0.97);
+			    background: rgba(255,255,255,0.95);
 			    
 			    .cta_button {
 				    margin-top: rem-calc(10px);

@@ -52,7 +52,14 @@
 	    var header_waypoint_handler = new Waypoint({		    
 		      
 			element: document.getElementById('header_waypoint'),
-			handler: function(direction) {			  						
+			handler: function(direction) {	
+				
+				//Add to the header for all sizes
+				if (direction === 'down') {
+					$('header.header').addClass('scroll');
+				} else {
+					$('header.header').removeClass('scroll');
+				}		  						
 				
 				// function for large devices
 				function large_header_waypoint() {
