@@ -1,4 +1,4 @@
-$titleFont: "gesta", Helvetica, Arial, sans-serif;
+$titleFont: "omnes-pro", Helvetica, Arial, sans-serif;
 $bodyFont: "adelle", Georgia, serif;
 
 
@@ -34,6 +34,11 @@ h1, h2, h3, h4 {
 	font-weight: 200;
 	margin: 0px;
 	padding: 0px;
+	
+	.not_bold {
+		
+		font-weight: 200 !important;
+	}
 }
 
 h1.page_title {
@@ -51,10 +56,6 @@ h1.body_font {
 
 h2.alt {
 	margin-top: 0px;
-}
-
-p {
-	margin: 0px 0px rem-calc(10px) 0px;
 }
 
 br {
@@ -149,13 +150,6 @@ time {
 	//font-style: italic;
 }
 
-#page {
-	font-size:rem-calc(17px);
-	/* equivalent to 16px */
-	line-height: 1.25em
-	/* equivalent to 20px */
-}
-
 .menu_font {
 	font-family: $titleFont;
 	text-transform: uppercase;
@@ -173,6 +167,7 @@ h2, h1.alt, h1.home_intro {
 	/* 1.625x body copy size = 26px */
 	line-height: 1.15384615em;
 	/* 30px / 26px */
+	font-weight: bold;
 }
 
 h3, h2.alt, .module h1.alt, h1.alt_2 {
@@ -180,6 +175,7 @@ h3, h2.alt, .module h1.alt, h1.alt_2 {
 	/* 1.375x body copy size = 22px */
 	line-height: 1.13636364;
 	/* 25px / 22px */
+	font-weight: bold;
 }
 
 h4, h3.alt, .module h2.alt {
@@ -187,6 +183,7 @@ h4, h3.alt, .module h2.alt {
 	font-size: rem-calc(19px);
 	/* 1.125x body copy size = 18px */
 	line-height: 1.11111111;
+	font-weight: bold;
 }
 
 p.alt {
@@ -195,17 +192,127 @@ p.alt {
 }
 
 blockquote {
-	font-size: rem-calc(22px);
+	font-size: rem-calc(22px) !important;
 	/* 20px / 16px */
-	line-height: 1.25;
+	line-height: 1.25 !important;
 	/* 25px / 20px */
 	margin-top: rem-calc(30px) !important;
 	margin-bottom: rem-calc(30px) !important;
 	font-style: italic;
 	text-align: center;
+	border: none !important;
 	
 	p {
-		
+		font-size: rem-calc(22px) !important;
 		text-align: center;
+	}
+	
+	@include mappy-bp($tab) {
+		font-size: rem-calc(26px) !important;
+		
+		p {
+			font-size: rem-calc(26px) !important;
+		}
+	}
+}
+
+
+#page {
+	
+	@include mappy-bp($desk) {
+		font-size:rem-calc(18px);
+		/* equivalent to 16px */
+		line-height: 1.5em
+		/* equivalent to 20px */
+	}
+	
+	@include mappy-bp($desk-large) {
+		font-size:rem-calc(19px);
+		/* equivalent to 16px */
+		line-height: 1.65em
+		/* equivalent to 20px */
+	}
+}
+
+.content {
+	
+	h1 {
+		
+		@include mappy-bp($tab) {
+			
+			font-size: rem-calc(42px);
+		}
+		
+		@include mappy-bp($desk) {
+			
+			font-size: rem-calc(50px);
+		}
+		
+		@include mappy-bp($desk-large) {
+			
+			font-size: rem-calc(58px);
+		}
+	}
+	
+	h2 {
+		
+		padding: rem-calc(4px) 0px rem-calc(-4px);
+		border-top: 2rem solid white;
+		border-bottom: 2rem solid white;
+		
+		&:first-child {
+			border-top: none !important;
+			padding-top: 0px !important;
+		}
+		
+		@include mappy-bp($tab) {
+			
+			font-size: rem-calc(30px);
+		}
+		
+		@include mappy-bp($desk) {
+			
+			font-size: rem-calc(32px);
+		}
+		
+		@include mappy-bp($desk-large) {
+			
+			font-size: rem-calc(36px);
+		}
+	}
+	
+	h3 {
+		
+		padding: rem-calc(5px) 0px rem-calc(-5px);
+		border-top: 1rem solid white;
+		border-bottom: 1rem solid white;
+		
+		&:first-child {
+			border-top: none !important;
+			padding-top: 0px !important;
+		}
+	}
+	
+	p {
+		margin: rem-calc(7px) 0px rem-calc(-7px) 0px;
+		padding-bottom: rem-calc(27px);
+		
+		@include mappy-bp($tab) {
+			
+			margin: rem-calc(9px) 0px rem-calc(-9px) 0px;
+			padding-bottom: rem-calc(30px);
+		}
+		
+		@include mappy-bp($desk) {
+			
+			margin: rem-calc(10px) 0px rem-calc(-10px) 0px;
+			padding-bottom: rem-calc(32px);
+		}
+		
+		@include mappy-bp($desk-large) {
+			
+			margin: rem-calc(12px) 0px rem-calc(-12px) 0px;
+			padding-bottom: rem-calc(34px);
+		}
 	}
 }

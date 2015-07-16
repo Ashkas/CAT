@@ -1,0 +1,256 @@
+.page_header_wrapper, .featured_header_wrapper {
+	
+	.page-header {
+		border-bottom: 0px;
+		padding: 0px;
+		margin: rem-calc(40px) rem-calc(20px);
+	
+		h1 {
+			text-align: center;
+			font-weight: bold;
+		
+		}
+	}
+	
+}
+
+.page_header_wrapper {
+	
+	.page-header {
+		
+		@include mappy-bp($tab) {
+			
+			margin: rem-calc(100px) 0px;
+		}
+		
+		@include mappy-bp($desk) {
+			
+			margin: rem-calc(120px) 0px;
+		}
+		
+		@include mappy-bp($desk-large) {
+			
+			margin: rem-calc(140px) 0px;
+		}
+	}
+}
+
+@include mappy-bp($tab) {
+	.featured_header_wrapper {
+		
+		.page-header {
+			
+			picture {
+				max-height: rem-calc(350px);
+				overflow: hidden;
+				display: block;
+				
+				img {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+@include mappy-bp($desk) {
+	&.featured_header_wrapper {
+		
+		picture {
+			max-height: rem-calc(400px);
+		}
+	}
+}
+
+.blocks {
+	
+	h2 {
+		
+		border: 0px;
+		padding: 0px;
+		margin-bottom: rem-calc(14px);
+		
+		@include mappy-bp($tab) {
+			
+			font-size: rem-calc(28px);
+			margin-bottom: rem-calc(24px);
+		}
+		
+		@include mappy-bp($desk) {
+			
+			font-size: rem-calc(32px);
+			margin-bottom: rem-calc(32px);
+		}
+	}
+	
+	p {
+		
+		margin: 0px;
+		padding: 0px;
+	}
+	
+	.flex_row {
+		
+		@include mappy-bp($tab) {
+			@include flexbox;
+		}
+		
+		.page_child_grid_item {
+		
+			@include mappy-bp($tab) {
+				
+				width: 50%;
+				@include flex(1, 1, auto);
+				
+				.container {
+					width: auto !important;
+				}
+			}
+		}
+		
+		&:nth-child(2n+1) {
+			.page_child_grid_item {
+					
+				&:nth-child(2n+1) {
+					
+					background: $main-colour;
+					color: white;
+					
+					@include light-link_underline;
+				}
+				
+				&:nth-child(2n+2) {
+					
+					background: $alt2-colour;
+					
+					@include dark-link_underline;
+				}
+			}
+		}
+		
+		&:nth-child(2n+2) {
+			.page_child_grid_item {
+					
+				&:nth-child(2n+1) {
+					
+					background: $alt-colour;
+					color: white;
+					
+					@include light-link_underline;
+				}
+				
+				&:nth-child(2n+2) {
+					
+					background: white;
+					
+					@include dark-link_underline_alt;
+				}
+			}
+		}
+	}
+}
+
+/* ==========================================================================
+   Accordian for things like FAQ
+   // From: http://codepen.io/chriswrightdesign/pen/cmanI
+   ========================================================================== */
+   
+
+//updated ver
+.accordion dl,
+.accordion-list {
+   //border:1px solid #ddd;
+   &:after {
+       content: "";
+       display:block;
+       height:1em;
+       width:100%;
+       background-color:darken(#38cc70, 10%);
+     }
+}
+.accordion {
+    position:relative;
+}
+.accordionTitle, .accordion__Heading {
+	display:block;
+	transition:background-color 0.5s ease-in-out;
+	
+	&:link, &:active {
+		color: $darkgrey;
+		
+		&:before {
+			color: $main-colour;	
+		}
+	}
+	
+	&:before {
+		content: "+";
+		font-size:1.5em;
+		line-height:1em;
+		margin-right: rem-calc(10px);
+		float:left; 
+		transition: transform 0.3s ease-in-out;
+	}
+	&:hover {
+		color: $alt-colour;
+	}
+}
+.accordionTitleActive, 
+.accordionTitle.is-expanded {
+   //background-color:darken(#38cc70, 10%);
+    &:before {
+      transform:rotate(-225deg);
+    }
+    
+    &:link, &:active {
+		color: $alt-colour;   
+	}
+}
+.accordionItem {
+    height:auto;
+    overflow:hidden; 
+    //SHAME: magic number to allow the accordion to animate
+    max-height:50em;
+    transition:max-height 1s;   
+    
+    @media screen and (min-width:48em) {
+         max-height:15em;
+        transition:max-height 0.5s
+    }
+   
+}
+ 
+.accordionItem.is-collapsed {
+    max-height:0;
+}
+.no-js .accordionItem.is-collapsed {
+  max-height: auto;
+}
+.animateIn {
+     animation: accordionIn 0.65s normal ease-in-out both 1; 
+}
+.animateOut {
+     animation: accordionOut 0.75s alternate ease-in-out both 1;
+}
+@keyframes accordionIn {
+  0% {
+    opacity: 0;
+    transform:scale(0.9) rotateX(-60deg);
+    transform-origin: 50% 0;
+  }
+  100% {
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+@keyframes accordionOut {
+    0% {
+       opacity: 1;
+       transform:scale(1);
+     }
+     100% {
+          opacity:0;
+           transform:scale(0.9) rotateX(-60deg);
+       }
+}

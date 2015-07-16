@@ -32,7 +32,7 @@ if( $banners ): ?>
 				@media only screen and (min-width: 1240px) {
 					.home_parralax_image {
 						background: url('<?php echo $image['sizes']['banner-xlarge']; ?>')  no-repeat 0 0 fixed !important;
-						min-height: 750px;
+						min-height: 800px;
 						margin-top: -95px;
 					}
 				}
@@ -76,20 +76,6 @@ if( $banners ): ?>
 		</div>
 	</div> <!-- container -->
 
-	<div class="coloured_background_1">
-		<div class="container">
-			<div class="big_margin_top">
-				<?php include(locate_template( 'flexible_content/block-1.php' ));   ?>
-			</div>
-		</div> <!-- container -->
-	</div> <!-- coloured_background_1 -->
+	<?php include(locate_template( 'flexible_content/block-1.php' ));   ?>
 	
-	<div class="container">
-		<div class="big_margin_top">
-			<?php include(locate_template( 'flexible_content/block-2.php' ));   ?>
-		</div>
-	</div> <!-- container -->
-	
-	<?php include(locate_template( 'flexible_content/block-3.php' ));   ?>
-</a></a>
 </main>

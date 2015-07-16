@@ -19,10 +19,14 @@
 	@include mappy-bp($tab){
 		position: absolute;
 		z-index: 98;
-		top: 40%;
+		top: 45%;
 		left: 15%;
 		right: 15%;
 		//max-width: rem-calc(480px);
+	}
+	
+	@include mappy-bp($desk){
+		//top: 50%;
 	}
 	
 	.banner_tagline {
@@ -38,6 +42,7 @@
 		@include mappy-bp($desk) {
 			
 			font-size: rem-calc(36px);
+			margin-bottom: rem-calc(160px);
 		}
 	}
 	

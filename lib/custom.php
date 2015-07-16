@@ -92,10 +92,11 @@ function ashkas_responsive_shortcode( $atts ) {
 
 // Template function for PictureFill
 
-function do_feature_picturefill ($image_id, $link = NULL, $size1="0", $size2="600", $size3="1000") {
+function do_feature_picturefill ($image_id, $link = NULL, $size1="0", $size2="600", $size3="1000", $size4="1280") {
 	$small = wp_get_attachment_image_src($image_id,'featured-small');
 	$medium = wp_get_attachment_image_src($image_id,'featured-medium');
 	$large = wp_get_attachment_image_src($image_id,'featured-large');
+	$xlarge = wp_get_attachment_image_src($image_id,'featured-xlarge');
 	$get_meta = get_post_meta($image_id);
 	$alt = get_post_meta($image_id, '_wp_attachment_image_alt', true);
 	if(empty($alt)){
@@ -112,10 +113,43 @@ function do_feature_picturefill ($image_id, $link = NULL, $size1="0", $size2="60
 		<picture>
 			'.$link_open.'
 				<!--[if IE 9]><video style="display: none;"><![endif]-->
-					<source srcset="'.$large[0].'" media="(min-width: '.$size3.')" alt="'.$alt.'">
-					<source srcset="'.$medium[0].'" media="(min-width: '.$size2.')" alt="'.$alt.'">
+					<source srcset="'.$xlarge[0].'" media="(min-width: '.$size4.'px)" alt="'.$alt.'">
+					<source srcset="'.$large[0].'" media="(min-width: '.$size3.'px)" alt="'.$alt.'">
+					<source srcset="'.$medium[0].'" media="(min-width: '.$size2.'px)" alt="'.$alt.'">
 				<!--[if IE 9]></video><![endif]-->
 				<img srcset="'.$small[0].'" alt="'.$alt.'">
+				<noscript><img src="'.$large[0].'" alt="'.$alt.'"></noscript>
+			'.$link_close.'
+		</picture>';
+}
+
+function do_page_feature_picturefill ($image_id, $link = NULL, $size1="0", $size2="600", $size3="1000", $size4="1280") {
+	$small = wp_get_attachment_image_src($image_id,'page-featured-small');
+	$medium = wp_get_attachment_image_src($image_id,'page-featured-medium');
+	$large = wp_get_attachment_image_src($image_id,'page-featured-large');
+	$xlarge = wp_get_attachment_image_src($image_id,'page-featured-xlarge');
+	$get_meta = get_post_meta($image_id);
+	$alt = get_post_meta($image_id, '_wp_attachment_image_alt', true);
+	if(empty($alt)){
+		$alt = get_the_title($image_id);
+	}
+	$link = '';
+	
+	if($link):
+		$link_open = '<a href="'.$link.'">';
+		$link_close = '</a>';
+	endif;
+	
+	return '
+		<picture>
+			'.$link_open.'
+				<!--[if IE 9]><video style="display: none;"><![endif]-->
+					<source srcset="'.$xlarge[0].'" media="(min-width: '.$size4.'px)" alt="'.$alt.'">
+					<source srcset="'.$large[0].'" media="(min-width: '.$size3.'px)" alt="'.$alt.'">
+					<source srcset="'.$medium[0].'" media="(min-width: '.$size2.'px)" alt="'.$alt.'">
+				<!--[if IE 9]></video><![endif]-->
+				<img srcset="'.$small[0].'" alt="'.$alt.'">
+				<noscript><img src="'.$large[0].'" alt="'.$alt.'"></noscript>
 			'.$link_close.'
 		</picture>';
 }
@@ -143,10 +177,24 @@ function do_free_height_picturefill ($image_id, $link = NULL, $class = NULL, $si
 		<picture>
 			'.$link_open.'
 				<!--[if IE 9]><video style="display: none;"><![endif]-->
-					<source srcset="'.$large[0].'" media="(min-width: '.$size2.')" alt="'.$alt.'">
+					<source srcset="'.$large[0].'" media="(min-width: '.$size2.'px)" alt="'.$alt.'">
 				<!--[if IE 9]></video><![endif]-->
 				<img srcset="'.$medium[0].'" alt="'.$alt.'" '.$class.'>
+				<noscript><img src="'.$large[0].'" alt="'.$alt.'"></noscript>
 			'.$link_close.'
 		</picture>';
 }
 
+
+// Filter images in the content to pull them out of the main div so they bleed full width
+function filter_blockquote($content){
+	$search = '/<blockquote>(.*?)<\/blockquote>/';
+	
+	//This is for large size image
+	$replace = '</div><blockquote class="margin_auto">$1</blockquote><div class="col-md-10 col-lg-9 margin_auto no_padding">';
+	
+    return preg_replace($search, $replace, $content);
+}
+add_filter('the_content', 'filter_blockquote');
+
+// Filter images in the content to pull them out of the main div so they bleed full width

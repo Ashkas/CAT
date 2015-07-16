@@ -41,6 +41,22 @@
 	}
 }
 
+@mixin light-link_underline {
+	
+	a:link, a:visited {
+		color: white;
+		text-shadow: none;
+		text-decoration: none;
+		border-bottom: 1px solid white;
+		padding-bottom: rem-calc(2px);
+	}
+	
+	a:hover, a:focus {
+		color: $darkgrey;
+		border-color: $darkgrey;
+	}
+}
+
 @mixin dark-link {
 	
 	a:link, a:visited {
@@ -54,6 +70,38 @@
 	}
 }
 
+@mixin dark-link_underline {
+	
+	a:link, a:visited {
+		color: $darkgrey;
+		text-shadow: none;
+		text-decoration: none;
+		border-bottom: 1px solid $darkgrey;
+		padding-bottom: rem-calc(2px);
+	}
+	
+	a:hover, a:focus {
+		color: white;
+		border-color: white;
+	}
+}
+
+@mixin dark-link_underline_alt {
+	
+	a:link, a:visited {
+		color: $darkgrey;
+		text-shadow: none;
+		text-decoration: none;
+		border-bottom: 1px solid $darkgrey;
+		padding-bottom: rem-calc(2px);
+	}
+	
+	a:hover, a:focus {
+		color: $alt-colour;
+		border-color: $alt-colour;
+	}
+}
+
 /* ==========================================================================
    Blocks
    ========================================================================== */
@@ -63,6 +111,22 @@
 	margin-bottom: rem-calc(20px);
 	padding-bottom: rem-calc(20px);
 	border-bottom: 1px solid $block-border;
+}
+
+@mixin dotted-block-border {
+	margin-bottom: rem-calc(20px);
+	padding-bottom: rem-calc(20px);
+	border-bottom: 3px dotted $block-border;
+	
+	@include mappy-bp($tab) {
+		margin-bottom: rem-calc(30px);
+		padding-bottom: rem-calc(30px);
+	}
+	
+	@include mappy-bp($desk) {
+		margin-bottom: rem-calc(40px);
+		padding-bottom: rem-calc(40px);
+	}
 }
 
 @mixin mobile-block-border {

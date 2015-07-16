@@ -21,6 +21,7 @@ $sage_includes = [
   'lib/custom.php',                // Other Custom functions
   'lib/acf.php',                // ACF Custom functions
   'lib/nav_walkers.php',                // Nav Walker functions
+  'lib/simple_html_dom.php',         // Include the PHP html parser library. Is used to look for images in the content and replace them, http://htmlparsing.com/php.html
 ];
 
 foreach ($sage_includes as $file) {

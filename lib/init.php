@@ -39,9 +39,12 @@ function setup() {
   // set_post_thumbnail_size(150, 150, false);
   add_image_size('featured-small', 480, 270, array('center', 'center'));
   add_image_size('featured-medium', 820, 461, array('center', 'center'));
-  add_image_size('featured-large', 1240, 697, array('center', 'center')); 
+  add_image_size('page-featured-medium', 820, 350, array('center', 'center'));
+  add_image_size('featured-large', 1240, 697, array('center', 'center'));
+  add_image_size('page-featured-large', 1240, 400, array('center', 'center'));  
   add_image_size('banner-large', 1240, 806, array('center', 'center'));  
   add_image_size('featured-xlarge', 1440, 810, array('center', 'center'));
+  add_image_size('page-featured-xlarge', 1440, 450, array('center', 'center')); 
   add_image_size('banner-xlarge', 1440, 936, array('center', 'center'));
 
   // Add post formats
@@ -64,7 +67,6 @@ add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
  * Register sidebars
  */
 function widgets_init() {
-/*
   register_sidebar([
     'name'          => __('Primary', 'sage'),
     'id'            => 'sidebar-primary',
@@ -73,7 +75,6 @@ function widgets_init() {
     'before_title'  => '<h3>',
     'after_title'   => '</h3>'
   ]);
-*/
 
   register_sidebar([
     'name'          => __('Footer', 'sage'),

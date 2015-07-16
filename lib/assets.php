@@ -78,7 +78,6 @@ function assets() {
 	wp_enqueue_script('typekit', '//use.typekit.net/qcn6alm.js', array(), null, true);
 	wp_enqueue_script('addthis', '//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-559c951bd52802be', array(), null, true);
 	wp_enqueue_script('sage_js', asset_path('scripts/main.js'), ['jquery'], null, true);
-	//wp_enqueue_script('hamburgler_js', asset_path('scripts/hamburgler.js'), array(), null, false);
 	//wp_enqueue_script('waypoint_js', asset_path('scripts/jquery.waypoints.js'), array(), null, true);
 	//wp_enqueue_script('classie_js', asset_path('scripts/classie.js'), array(), null, true);
   

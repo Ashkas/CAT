@@ -133,6 +133,8 @@ button {
 	height: auto;
 	min-height: rem-calc(40px);
 	font-size: rem-calc(20px);
+	letter-spacing: rem-calc(1px);
+	font-weight: bold;
 	
 	[class^="icon-"], [class*=" icon-"] {
 		display: inline-block;

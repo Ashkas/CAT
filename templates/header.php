@@ -31,7 +31,7 @@
 		
 	<div class="midbar">
 		<div class="container mobile_scroll_hide">
-			<div class="row">
+<!-- 			<div class="row"> -->
 				<div class="col-xs-9 brand_col">
 					<a class="brand" href="<?php echo $home_url; ?>">
 						<!--[if lte IE 8]><img src="<?php echo $template_directory; ?>/assets/images/logo-horizontal.png" alt="Counselling at Home"/><![endif]-->	
@@ -55,8 +55,8 @@
 				<?php include(locate_template( 'templates/menu-primary.php' )); ?>
 				<div class="clearfix"></div>
 				
-			</div> <!-- row -->
-		</div> <!-- container -->
+<!-- 			</div> --> <!-- row -->
+		</div> <!-- mobile_scroll_hide -->
 		
 		<?php if($cta_button): ?>
 			<div class="header_cta">

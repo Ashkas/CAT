@@ -1,49 +1,72 @@
 <?php if ( ! defined( 'WPINC' ) ) { die; } // If this file is called directly, abort.
 	
 // Pull the Icon Blocks Flexible content
-if( have_rows('icon_blocks', 'option') ):
-	
-	while ( have_rows('icon_blocks', 'option') ) : the_row();	
-		
-		if( (get_row_layout() == 'icon_block')):
+if( have_rows('questions_and_answers') && !is_home() ): ?>
+
+	<div class="big_margin_top">
+
+		<?php while ( have_rows('questions_and_answers') ) : the_row();	
 			
-			$block_title = get_sub_field('block_title');
-			$blocks = get_sub_field('blocks');
-			
-			if($block_title): ?>
-				<div class="row big_margin_bottom">
-					<h2 class="home_title"><?php echo $block_title; ?></h2>
-				</div>
-			<?php endif;
+			if( (get_row_layout() == 'q_and_a_block')):
 				
-			if(get_sub_field('blocks')):
-		
-				$counter = 1;
-				while(has_sub_field('blocks')):
+				$block_title = get_sub_field('q_and_a_block_title');
+				$blocks = get_sub_field('q_and_a');
+				
+				if($block_title): ?>
+					<h2><?php echo $block_title; ?></h2>
+				<?php endif;
 					
-					//variables
-					$title = get_sub_field('title');
-					$text = get_sub_field('text');
-					$image = get_sub_field('image');
-					
-					 // if else on odds and evens
-					if($counter == 1 || $counter == 4 || $counter == 7 ) : ?>
-						<div class="row big_margin_bottom icon_block_row">
-					<?php endif; ?>
-						<div class="col-sm-4 big_margin_bottom">
-							<?php echo '<div class="very_small_image margin_bottom">'.do_free_height_picturefill($image, $link, 'margin_auto').'</div>'; ?>
-							<?php echo '<h3 class="centre_text margin_bottom">'.$title.'</h3>'; ?>
-							<?php echo '<p class="centre_text">'.$text.'</p>'; ?>
-						</div>
-					<?php if($counter == 3 || $counter == 6 || $counter == 9 ) : ?>
-						</div>
-					<?php endif; ?>
-					
-				<?php $counter++; endwhile;
-			endif;?>
-      
-	<?php endif; //get_layout_row
-		
-	endwhile; //have_rows
+				if($blocks): ?>
+					<div class="margin_bottom">
+						<dl class="accordian">
+							<?php $counter = 1;
+							
+							while(has_sub_field('q_and_a')):
+								
+								//variables
+								$question = get_sub_field('question');
+								$answer = get_sub_field('answer'); ?>
+								
+								<dt><a aria-expanded="false" aria-controls="accordion<?php echo $counter; ?>" class="accordion-title accordionTitle js-accordionTrigger" href="#accordion<?php echo $counter; ?>"><?php echo $question; ?></a></dt>
+								<dd id="accordion<?php echo $counter; ?>" class="accordion-content accordionItem is-collapsed" aria-hidden="true"><?php echo $answer; ?> </dd>
+								
+							<?php $counter++; endwhile; ?>
+						</dl> <!-- accordian -->
+					</div> <!-- row -->
+				<?php endif;?>
+	      
+			<?php endif; //get_layout_row
+			
+		endwhile; //have_rows ?>
+	</div> <!-- big_margin_top -->
 	
-endif;  // have_rows?>
+<!--
+	<script>
+		jQuery(document).ready(function() {
+			function close_accordion_section() {
+				jQuery('.accordion .accordion-section-title').removeClass('active');
+				jQuery('.accordion .accordion-section-content').slideUp(300).removeClass('open');
+			}
+		
+			jQuery('.accordion-section-title').click(function(e) {
+				// Grab current anchor value
+				var currentAttrValue = jQuery(this).attr('href');
+		
+				if(jQuery(e.target).is('.active')) {
+					close_accordion_section();
+				}else {
+					close_accordion_section();
+		
+					// Add active class to section title
+					jQuery(this).addClass('active');
+					// Open up the hidden content panel
+					jQuery('.accordion ' + currentAttrValue).slideDown(300).addClass('open'); 
+				}
+		
+				e.preventDefault();
+			});
+		});
+	</script>
+-->
+	
+<?php endif;  // have_rows?>

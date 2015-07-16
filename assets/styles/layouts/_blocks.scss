@@ -22,6 +22,11 @@
 		order: 1;
 	}
 	
+	.cta_button {
+		
+		max-width: rem-calc(280px) !important;	
+	}
+	
 	@include mappy-bp($tab) {
 		
 		display: block;
@@ -61,4 +66,26 @@
 			font-size: rem-calc(32px);
 		}
 	}
+	
+	h2.step_title_alt {
+		
+		
+		@include mappy-bp($desk) {
+			
+			margin-top: rem-calc(30px);
+			font-size: rem-calc(32px);
+			margin-bottom: rem-calc(30px);
+		}
+		
+		@include mappy-bp($desk-large) {
+			
+			margin-top: rem-calc(40px);
+			font-size: rem-calc(34px);
+		}
+	}
+}
+
+.block_row_alt {
+	
+	@include dotted-block-border;
 }
