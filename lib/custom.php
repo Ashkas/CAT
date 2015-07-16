@@ -198,3 +198,57 @@ function filter_blockquote($content){
 add_filter('the_content', 'filter_blockquote');
 
 // Filter images in the content to pull them out of the main div so they bleed full width
+
+
+// check if page has children - https://gist.github.com/lukaszklis/1247306
+function has_children() {
+	global $post;
+	$children = get_pages('child_of=' . $post->ID);
+	if( count( $children ) != 0 ) { return true; } // Has Children
+    else { return false; } // No children
+}
+
+// Set up walkers for wp_list_pages, so I can show the short_name custom field if it exists http://www.456bereastreet.com/archive/201101/cleaner_html_from_the_wordpress_wp_list_pages_function/
+class Short_Name_Walker extends Walker_Page {
+    function start_lvl(&$output, $depth) {
+        $indent = str_repeat("\t", $depth);
+        $output .= "\n$indent<ul>\n";
+    }
+    function start_el(&$output, $page, $depth, $args, $current_page) {
+        //Get the short_title if it is there
+        if(get_field('short_title', $page->ID)) : 
+			$title = get_field('short_title', $page->ID); 
+		else: 
+			$title = $page->post_title;
+		endif;
+        
+        if ( $depth )
+            $indent = str_repeat("\t", $depth);
+        else
+            $indent = '';
+        extract($args, EXTR_SKIP);
+        $class_attr = '';
+        if ( !empty($current_page) ) {
+            $_current_page = get_page( $current_page );
+            if ( (isset($_current_page->ancestors) && in_array($page->ID, (array) $_current_page->ancestors)) || ( $page->ID == $current_page ) || ( $_current_page && $page->ID == $_current_page->post_parent ) ) {
+                $class_attr = 'sel';
+            }
+        } elseif ( (is_single() || is_archive()) && ($page->ID == get_option('page_for_posts')) ) {
+            $class_attr = 'sel';
+        }
+        if ( $class_attr != '' ) {
+            $class_attr = ' class="' . $class_attr . '"';
+            $link_before .= '<strong>';
+            $link_after = '</strong>' . $link_after;
+        }
+        $output .= $indent . '<li' . $class_attr . '><a href="' . get_page_link($page->ID) . '"' . $class_attr . '>' . $link_before . apply_filters( 'the_title', $title, $page->ID ) . $link_after . '</a> |</li>';
+
+        if ( !empty($show_date) ) {
+            if ( 'modified' == $show_date )
+                $time = $page->post_modified;
+            else
+                $time = $page->post_date;
+            $output .= " " . mysql2date($date_format, $time);
+        }
+    }
+}
