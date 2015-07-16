@@ -29,9 +29,7 @@
 	<?php if(is_dynamic_sidebar('sidebar-footer')): ?>
 		<div class="mid_bar">
 			<div class="container">
-				<div class="row">
-					<?php dynamic_sidebar('sidebar-footer'); ?>
-				</div>
+				<?php dynamic_sidebar('sidebar-footer'); ?>
 			</div> <!-- container -->
 		</div> <!-- midbar -->
 	<?php endif; ?>
