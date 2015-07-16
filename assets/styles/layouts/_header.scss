@@ -50,10 +50,17 @@ header[role="banner"] {
 					border-radius: 4px;
 				}
 			}
+			
+			.float_right {
+				
+				a {
+					margin-left: rem-calc(10px); 
+				}
+			}
 		}
 		
 		@include mappy-bp($desk) {
-			
+			padding: rem-calc(7px) 0px;
 			background: none;
 			color: $darkgrey;
 			@include dark-link;

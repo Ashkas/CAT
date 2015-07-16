@@ -24,7 +24,7 @@
 	<div class="topbar">
 		<div class="container">
 			<small class="float_left text_left header_phone"><a href="tel:<?php echo $phone_number; ?>" class="phone_link"><?php echo $phone_number; ?></a></small>
-			<small class="float_right text_right"><a href="<?php echo $home_url; ?>/users/sign_up" title="Sign up to Counselling at Home Account">Sign up</a> | <a href="<?php echo $home_url; ?>/login" title="Login to your Counselling at Home Account">Login</a> <?php if($cta_button) echo $cta_button?></small>				
+			<small class="float_right text_right"><a href="<?php echo $home_url; ?>/users/sign_up" title="Sign up to Counselling at Home Account">Sign up</a> <a href="<?php echo $home_url; ?>/login" title="Login to your Counselling at Home Account">Login</a> <?php if($cta_button) echo $cta_button?></small>				
 			<div class="clearfix"></div>
 		</div> <!-- container -->
 	</div> <!-- topbar -->
@@ -32,7 +32,7 @@
 	<div class="midbar">
 		<div class="container mobile_scroll_hide">
 <!-- 			<div class="row"> -->
-				<div class="col-xs-9 brand_col">
+				<div class="col-xs-9 brand_col no_padding">
 					<a class="brand" href="<?php echo $home_url; ?>">
 						<!--[if lte IE 8]><img src="<?php echo $template_directory; ?>/assets/images/logo-horizontal.png" alt="Counselling at Home"/><![endif]-->	
 						<img src="<?php echo $template_directory; ?>/assets/images/logo-horizontal.svg" alt="Counselling at Home"/>
