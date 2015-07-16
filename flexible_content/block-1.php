@@ -1,5 +1,7 @@
 <?php if ( ! defined( 'WPINC' ) ) { die; } // If this file is called directly, abort.
 
+// This is used for all of the content blocks
+
 // Pull the content block flexible content
 if( have_rows('content_blocks', 'option') && is_home() ):
 	
@@ -15,18 +17,18 @@ if( have_rows('content_blocks', 'option') && is_home() ):
 
 			$block_title = get_sub_field('block_title');
 			$blocks = get_sub_field('blocks');
-			
-			if($block_title): ?>
-				<div class="big_margin_bottom">
-					<h2 class="home_title"><?php echo $block_title; ?></h2>
-				</div>
-			<?php endif;
 				
 			if(get_sub_field('blocks')): ?>
 				<div class="coloured_background_1">
 					<div class="container">
 						<div class="big_margin_top">
-							<?php $counter = 1;
+							<?php if($block_title): ?>
+								<div class="big_margin_bottom">
+									<h2 class="home_title"><?php echo $block_title; ?></h2>
+								</div>
+							<?php endif;
+								
+							$counter = 1;
 							while(has_sub_field('blocks')):
 								
 								//variables
