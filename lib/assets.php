@@ -122,8 +122,39 @@ function cat_header_js_css() { ?>
 add_action('wp_head', __NAMESPACE__ . '\\cat_header_js_css', 20);
 
 
-function cat_footer_js() { ?>
-	<!-- Header search -->
+function cat_footer_js_css() { ?>
+	
+<!-- 	Fallback for typography in case JS is off -->
+	<style>
+		
+/* 		FOUT fallback */
+		.no-js h1, .no-js h2, .no-js h3, .no-js h4, .no-js p, .no-js li, .no-js time,
+		.no-js pre, .no-js small, .no-js dl, .no-js figcaption, .no-js span, .no-js .site_header img, p.sass_error, .no-js img, .no-js blockquote, .no-js a, .no-js select, .no-js input, .no-js label, .no-js button, .no-js tr, .no-js td {
+			opacity: 1;
+		    visibility: visible; /* Old IE */
+		    -webkit-transition: opacity 0.24s ease-in-out;
+		       -moz-transition: opacity 0.24s ease-in-out;
+		            transition: opacity 0.24s ease-in-out;
+		}
+		
+		.no-js {
+			background: none;
+		}
+		
+/* 		Search fallback */
+		.no-js .sb-search {
+			height: 60px;
+			max-height: 60px;
+		}
+			
+		.no-js .sb-search-input, .no-js .sb-search-submit {
+			opacity: 1 !important;
+			visibility: visible !important;
+		}
+		
+	</style>
+	
+	<!-- Footer search -->
 	<script>
 		var menuTop = document.getElementById( 'sb-search' ),
 			showTop = document.getElementById( 'search_toggle' ),
@@ -146,4 +177,4 @@ function cat_footer_js() { ?>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 <?php
 }
-add_action('wp_footer', __NAMESPACE__ . '\\cat_footer_js', 20); ?>
+add_action('wp_footer', __NAMESPACE__ . '\\cat_footer_js_css', 20); ?>

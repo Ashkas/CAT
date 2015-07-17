@@ -1,0 +1,17 @@
+.hentry {
+	
+	@include block-border;
+	
+	h2.entry-title {
+		
+		border-bottom: 1rem solid white;
+	}
+	
+	.entry-summary {
+		
+		p {
+			margin: 0px;
+			padding-bottom: 0.2rem;
+		}
+	}
+}

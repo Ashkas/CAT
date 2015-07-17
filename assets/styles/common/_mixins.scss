@@ -359,10 +359,10 @@
 
 /* TRANSITION */
 @mixin transition($what: all, $length: 1s, $easing: ease-in-out) {
-    -moz-transition:    $what $length $easing;
-    -o-transition:      $what $length $easing;
-    -webkit-transition: $what $length $easing;
-    -ms-transition:     $what $length $easing;
-    transition:         $what $length $easing;
+    -moz-transition:    $what $length $easing !important;
+    -o-transition:      $what $length $easing !important;
+    -webkit-transition: $what $length $easing !important;
+    -ms-transition:     $what $length $easing !important;
+    transition:         $what $length $easing !important;
 
 }

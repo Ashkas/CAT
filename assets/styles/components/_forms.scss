@@ -71,6 +71,7 @@ input[type="checkbox"] {
 	margin-right: rem-calc(5px);
 }
 
+
 /* ------------------------------------------------------ Buttons */
 
 button {
@@ -160,6 +161,22 @@ button {
 .button-alt {
 	margin-bottom: rem-calc(10px);
 }
+
+.btn, .comment-form input[type="submit"] {
+	
+	height: rem-calc(40px);
+	border: none;
+	background: $alt2-colour;
+	@include transition(all, .3s, ease-in);
+	
+	&:hover, :focus {
+		
+		background: $alt-colour;
+		border: none !important;
+		color: white;
+	}
+}
+
 
 /* ------------------------------------------------------ Custom input */
 

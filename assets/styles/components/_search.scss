@@ -151,3 +151,8 @@ input.sb-search-submit  {
 		}
 	}
 }
+
+.comment-form .form-inline .input-group input[type="text"], .comment-form .form-inline .input-group input[type="email"], .comment-form .form-inline .input-group input[type="url"], .comment-form .form-inline .input-group textarea, .form-inline .input-group .comment-form input[type="text"], .form-inline .input-group .comment-form input[type="email"], .form-inline .input-group .comment-form input[type="url"], .form-inline .input-group .comment-form textarea, .form-inline .input-group .form-control, .form-inline .input-group .input-group-addon, .form-inline .input-group .input-group-btn {
+		
+		width: 100% !important;
+}

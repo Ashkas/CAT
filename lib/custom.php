@@ -85,7 +85,6 @@ function ashkas_responsive_shortcode( $atts ) {
             . ashkas_get_picture_srcs( $imageid, $mappings ) .
             '<!--[if IE 9]></video><![endif]-->
             <img srcset="' . wp_get_attachment_image_src( $imageid[0] ) . '" alt="' . ashkas_get_img_alt( $imageid ) . '">
-            <noscript>' . wp_get_attachment_image( $imageid, $mappings[0] ) . ' </noscript>
         </picture>';
 }
 
@@ -118,7 +117,6 @@ function do_feature_picturefill ($image_id, $link = NULL, $size1="0", $size2="60
 					<source srcset="'.$medium[0].'" media="(min-width: '.$size2.'px)" alt="'.$alt.'">
 				<!--[if IE 9]></video><![endif]-->
 				<img srcset="'.$small[0].'" alt="'.$alt.'">
-				<noscript><img src="'.$large[0].'" alt="'.$alt.'"></noscript>
 			'.$link_close.'
 		</picture>';
 }
@@ -149,7 +147,6 @@ function do_page_feature_picturefill ($image_id, $link = NULL, $size1="0", $size
 					<source srcset="'.$medium[0].'" media="(min-width: '.$size2.'px)" alt="'.$alt.'">
 				<!--[if IE 9]></video><![endif]-->
 				<img srcset="'.$small[0].'" alt="'.$alt.'">
-				<noscript><img src="'.$large[0].'" alt="'.$alt.'"></noscript>
 			'.$link_close.'
 		</picture>';
 }
@@ -180,7 +177,6 @@ function do_free_height_picturefill ($image_id, $link = NULL, $class = NULL, $si
 					<source srcset="'.$large[0].'" media="(min-width: '.$size2.'px)" alt="'.$alt.'">
 				<!--[if IE 9]></video><![endif]-->
 				<img srcset="'.$medium[0].'" alt="'.$alt.'" '.$class.'>
-				<noscript><img src="'.$large[0].'" alt="'.$alt.'"></noscript>
 			'.$link_close.'
 		</picture>';
 }

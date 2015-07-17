@@ -1,6 +1,6 @@
 <?php use Roots\Sage\Titles; ?>
 
-<?php if((is_page() || is_single()) && !is_home()) : 
+<?php if((is_page() || is_single() || is_search()) && !is_home()) : 
 	
 	if(is_page()):
 		$featured_image = do_page_feature_picturefill(get_post_thumbnail_id());
@@ -13,7 +13,7 @@
 			<?php echo $featured_image; ?>
 			
 			<div class="wrap container">
-		    	<div class="content row">
+		    	<div class="content">
 					<div class="page-header">
 						<h1><?= Titles\title(); ?></h1>
 					</div>
@@ -25,7 +25,7 @@
 		
 		<div class="page_header_wrapper coloured_background_2 margin_bottom">
 			<div class="wrap container">
-		    	<div class="content row">
+		    	<div class="content">
 					<div class="page-header">
 						<h1><?= Titles\title(); ?></h1>
 					</div>

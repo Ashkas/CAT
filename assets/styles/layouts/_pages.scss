@@ -141,7 +141,7 @@
 				
 				&:nth-child(2n+2) {
 					
-					background: white;
+					background: $verylightgrey;
 					
 					@include dark-link_underline_alt;
 				}
