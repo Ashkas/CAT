@@ -20,17 +20,17 @@
 		
 		@include mappy-bp($tab) {
 			
-			margin: rem-calc(100px) 0px;
+			margin: rem-calc(50px) 0px;
 		}
 		
 		@include mappy-bp($desk) {
 			
-			margin: rem-calc(120px) 0px;
+			margin: rem-calc(65px) 0px;
 		}
 		
 		@include mappy-bp($desk-large) {
 			
-			margin: rem-calc(140px) 0px;
+			margin: rem-calc(80px) 0px;
 		}
 	}
 }

@@ -13,7 +13,6 @@ if(function_exists('get_field')):
 		$team_blocks = get_field('team_block', 'option');
 		$team_block_alt_colour = get_field('page_change_team_member_background');
 	endif;
-	
 endif;  //function_exists
 ?>
 
@@ -48,16 +47,50 @@ endif;  //function_exists
 		    <?php include(locate_template( 'flexible_content/block-1.php' )); 			   
 				
 			if($page_show_children):
-	
+			
+				// Check to see if coloured content blocks are set. If they are, then we want an extra space above the page children blocks
+				if( have_rows('content_blocks')):
+					
+					while ( have_rows('content_blocks') ) : the_row();
+					
+						// Find out if the coloured rows have been set. If they have then set a
+						if( (get_row_layout() == 'step_block' || get_row_layout() == 'video_block')):
+							$big_margin_top = 'big_margin_top';
+						endif;	
+					endwhile;
+				endif;
+				
+				//Work out what level page this is
+				$parent = $post->post_parent;
+				
+				if($parent):
+					$grandparent_get = get_post($parent);
+					$has_grandparent = $grandparent_get->post_parent;
+					
+					if(has_children()):
+						$middle = true;
+					endif;	
+				endif;
+				
+				if($has_grandparent):
+					$post_id = $parent;
+				elseif(!($has_grandparent || $middle) && $parent):
+					$post_id = $parent;
+				elseif($middle == true):
+					$post_id = $post->ID;
+				else:
+					$post_id = $post->ID;
+				endif;
+				
 				$args = array(
-					'child_of' => $post->ID,
+					'child_of' => $post_id,
 					'post_type' => 'page',
 					'post_status' => 'publish',
 				);
 					
 				$query = null;
 							
-				$key = 'child-pages-'.$post->ID;
+				$key = 'child-pages-'.$post_id;
 													
 				$query = wp_cache_get( $key, $group );
 							
@@ -68,7 +101,7 @@ endif;  //function_exists
 												
 				if($query):		
 					$counter = 1;
-					echo '<div class="blocks big_margin_bottom">';	
+					echo '<div class="blocks big_margin_bottom '.$big_margin_top.'">';	
 						foreach( $query as $post ) : setup_postdata($post);
 							
 							// if it is the first row

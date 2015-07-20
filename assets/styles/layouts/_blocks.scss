@@ -89,3 +89,17 @@
 	
 	@include dotted-block-border;
 }
+
+
+.logo_block {
+	
+	@include mappy-bp($tab) {
+		
+		[class^="col-"], [class*=" col-"] {
+			
+			&:nth-child(4n+5) {
+				clear: left;
+			}	
+		}
+	}
+}

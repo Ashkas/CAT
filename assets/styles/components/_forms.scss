@@ -86,7 +86,7 @@ button {
 	letter-spacing: -1px;
 	width: 100%;
 	max-width: rem-calc(220px);
-	background: $alt-colour;
+	//background: $alt-colour;
 	font-size: rem-calc(16px);
 	line-height: rem-calc(38px);
 	height: rem-calc(40px);
@@ -95,13 +95,14 @@ button {
 	text-align: center;
 	text-transform: uppercase;
 	@include transition(all, .3s, ease-in);
-	color: white;
+	//color: white;
 	
 	&:link, &:visited {
 		color: white;
 	}
 }
 
+/*
 .button, .big_button, .full_button, .button-alt {
 	
 	&:hover, &:focus {
@@ -110,6 +111,7 @@ button {
 		text-shadow: none;
 	}
 }
+*/
 
 .alt_button {
 	background: $alt2-colour !important;

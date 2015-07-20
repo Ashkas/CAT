@@ -11,6 +11,7 @@ if( have_rows('content_blocks', 'option') && is_home() ):
 		if( (get_row_layout() == 'step_block' || get_row_layout() == 'video_block')):
 			$cta_big_margin = 'big_margin_top';
 			$icon_big_margin = 'big_margin_top';
+			$free_text_big_margin = 'big_margin_top';
 		endif;	
 		
 		if( (get_row_layout() == 'step_block')):
@@ -175,7 +176,58 @@ if( have_rows('content_blocks', 'option') && is_home() ):
 					<?php endif;?>
 				</div> <!-- container -->
       
-		<?php endif; //get_layout_row
+		<?php elseif( (get_row_layout() == 'free_text_content')):
+			
+			$free_text = get_sub_field('free_text');?>
+			
+				<div class="container">				
+					<?php if($free_text): ?>
+						<div class="row big_margin_bottom <?php echo $free_text_big_margin; ?>">
+							<div class="col-md-10 col-lg-9 margin_auto content no_padding">
+								<?php echo $free_text; ?>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					<?php endif;?>
+				</div> <!-- container -->
+      
+		<?php elseif( (get_row_layout() == 'image_grid')):
+					
+			$block_title = get_sub_field('block_title');
+			$images = get_sub_field('images'); ?>
+		
+			<?php if($block_title): ?>
+				<div class="container">
+					<div class="row big_margin_bottom">
+						<h2 class="home_title"><?php echo $block_title; ?></h2>
+					</div>
+				</div>
+			<?php endif;
+				
+		if(get_sub_field('images')): ?>
+				
+				<div class="container">
+					<div class="row big_margin_bottom logo_block">
+						<?php $counter = 1;
+						while(has_sub_field('images')):
+							
+							//variables
+							$title = get_sub_field('title');
+							$link = get_sub_field('link');
+							$image = get_sub_field('image'); ?>
+								
+							<div class="col-sm-3 margin_bottom">
+								<?php if($link): echo '<a href="'.$link.'" title="'.$title.'" target="_blank">'; endif; ?>
+								<?php if($image) echo '<div class="margin_bottom">'.do_free_height_picturefill($image, $link, 'margin_auto').'</div>'; ?>
+								<?php if($link): echo '</a>'; endif; ?>
+							</div>
+															
+						<?php $counter++; endwhile; ?>
+					</div> <!-- row -->
+				</div> <!-- container -->
+			<?php endif; // get_sub_field
+			
+		endif; //get_layout_row
 		
 	endwhile; //have_rows
 
@@ -187,6 +239,7 @@ elseif( have_rows('content_blocks') && !is_home() ):
 		if( (get_row_layout() == 'step_block' || get_row_layout() == 'video_block')):
 			$cta_big_margin = 'big_margin_top';
 			$icon_big_margin = 'big_margin_top';
+			$free_text_big_margin = 'big_margin_top';
 		endif;
 		
 		if( (get_row_layout() == 'step_block')):
@@ -337,7 +390,58 @@ elseif( have_rows('content_blocks') && !is_home() ):
 					<?php endif;?>
 				</div> <!-- container -->
       
-		<?php endif; //get_layout_row
+		<?php elseif( (get_row_layout() == 'free_text_content')):
+			
+			$free_text = get_sub_field('free_text');?>
+			
+				<div class="container">				
+					<?php if($free_text): ?>
+						<div class="row big_margin_bottom <?php echo $free_text_big_margin; ?>">
+							<div class="col-md-10 col-lg-9 margin_auto content no_padding">
+								<?php echo $free_text; ?>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					<?php endif;?>
+				</div> <!-- container -->
+      
+		<?php elseif( (get_row_layout() == 'image_grid')):
+					
+			$block_title = get_sub_field('block_title');
+			$images = get_sub_field('images'); ?>
+		
+			<?php if($block_title): ?>
+				<div class="container">
+					<div class="row big_margin_bottom">
+						<h2 class="home_title"><?php echo $block_title; ?></h2>
+					</div>
+				</div>
+			<?php endif;
+				
+			if(get_sub_field('images')): ?>
+				
+				<div class="container">
+					<div class="row big_margin_bottom logo_block">
+						<?php $counter = 1;
+						while(has_sub_field('images')):
+							
+							//variables
+							$title = get_sub_field('title');
+							$link = get_sub_field('link');
+							$image = get_sub_field('image'); ?>
+								
+							<div class="col-sm-3 margin_bottom">
+								<?php if($link): echo '<a href="'.$link.'" title="'.$title.'" target="_blank">'; endif; ?>
+								<?php if($image) echo '<div class="margin_bottom">'.do_free_height_picturefill($image, $link, 'margin_auto').'</div>'; ?>
+								<?php if($link): echo '</a>'; endif; ?>
+							</div>
+															
+						<?php $counter++; endwhile; ?>
+					</div> <!-- row -->
+				</div> <!-- container -->
+			<?php endif; // get_sub_field
+			
+		endif; //get_layout_row
 		
 	endwhile; //have_rows
 	
