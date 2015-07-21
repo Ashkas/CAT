@@ -5,6 +5,18 @@ footer[role="contentinfo"] {
 		background: $midgrey;
 		color: white;
 		padding: rem-calc(10px) 0px;
+		
+		a {
+			text-shadow: none;
+			color: $alt2-colour;
+			vertical-align: middle;
+			line-height: rem-calc(32px);
+			
+			&:hover, &:focus {
+				text-decoration: none;
+				color: white;
+			}
+		}
 	}
 	
 	.mid_bar {
@@ -18,6 +30,14 @@ footer[role="contentinfo"] {
 		
 		@include light-grey-box;
 		padding: rem-calc(10px) 0px;
+		
+		a {
+			
+			&:hover, &:focus {
+				color: $main-colour;
+				text-decoration: none;
+			}
+		}
 		
 		ul {
 			
@@ -46,7 +66,7 @@ footer[role="contentinfo"] {
 		
 		p {
 			
-			line-height: rem-calc(16px);
+			line-height: 1.2em;
 			text-align: center;
 			font-size: 80%;
 			font-family: $titleFont;
@@ -105,6 +125,7 @@ footer[role="contentinfo"] {
 			
 			list-style-type: none;
 			font-size: rem-calc(13px);
+			line-height: 1.5em;
 			
 			a:link, a:visited {
 				

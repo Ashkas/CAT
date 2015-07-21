@@ -265,3 +265,21 @@ function search_nav() {
 		</nav> <!-- #<?php echo $html_id; ?> .navigation -->
 	<?php endif;
 }
+
+// Confirm email in contact form
+add_filter( 'wpcf7_validate_email*', 'custom_email_confirmation_validation_filter', 20, 2 );
+ 
+function custom_email_confirmation_validation_filter( $result, $tag ) {
+    $tag = new WPCF7_Shortcode( $tag );
+ 
+    if ( 'your-email-confirm' == $tag->name ) {
+        $your_email = isset( $_POST['your-email'] ) ? trim( $_POST['your-email'] ) : '';
+        $your_email_confirm = isset( $_POST['your-email-confirm'] ) ? trim( $_POST['your-email-confirm'] ) : '';
+ 
+        if ( $your_email != $your_email_confirm ) {
+            $result->invalidate( $tag, "Your two email addresses are different. They must be the same." );
+        }
+    }
+ 
+    return $result;
+}

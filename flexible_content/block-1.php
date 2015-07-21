@@ -206,12 +206,10 @@ if( have_rows('content_blocks', 'option') && is_home() ):
 			
 				<div class="container">				
 					<?php if($free_text): ?>
-						<div class="big_margin_bottom">
-							<div class="col-md-10 col-lg-9 margin_auto content no_padding">
-								<?php echo $free_text; ?>
-							</div>
-							<div class="clearfix"></div>
+						<div class="col-md-10 col-lg-9 margin_auto content no_padding">
+							<?php echo $free_text; ?>
 						</div>
+						<div class="clearfix"></div>
 					<?php endif;?>
 				</div> <!-- container -->
       
@@ -244,7 +242,7 @@ if( have_rows('content_blocks', 'option') && is_home() ):
 				if(get_sub_field('images')): ?>
 					
 					<div class="container">
-						<div class="row big_margin_bottom logo_block">
+						<div class="big_margin_bottom logo_block">
 							<?php $counter = 1;
 							while(has_sub_field('images')):
 								
@@ -461,12 +459,10 @@ elseif( have_rows('content_blocks') && !is_home() ):
 			
 				<div class="container">				
 					<?php if($free_text): ?>
-						<div class="big_margin_bottom">
-							<div class="col-md-10 col-lg-9 margin_auto content no_padding">
-								<?php echo $free_text; ?>
-							</div>
-							<div class="clearfix"></div>
+						<div class="col-md-10 col-lg-9 margin_auto content no_padding">
+							<?php echo $free_text; ?>
 						</div>
+						<div class="clearfix"></div>
 					<?php endif;?>
 				</div> <!-- container -->
       
@@ -499,7 +495,7 @@ elseif( have_rows('content_blocks') && !is_home() ):
 				if(get_sub_field('images')): ?>
 					
 					<div class="container">
-						<div class="row big_margin_bottom images_grid">
+						<div class="big_margin_bottom images_grid">
 							<?php $counter = 1;
 							while(has_sub_field('images')):
 								

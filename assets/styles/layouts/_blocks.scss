@@ -109,6 +109,7 @@
 		column-count:         4;
 	}
 	
+/*
 	@include mappy-bp($desk) {
 		-moz-column-count:    6;
 		-webkit-column-count: 6;
@@ -116,6 +117,7 @@
 		-o-column-count: 6;
 		column-count:         6;
 	}
+*/
 	
 	img {
 		/* Just in case there are inline attributes */

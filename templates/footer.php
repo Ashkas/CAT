@@ -1,4 +1,4 @@
-<?php //ACG Varibales
+	<?php //ACG Varibales
 	if(function_exists('get_field')):
 		// Top
 		$footer_top_bar = get_field('footer_top_bar', 'option');
@@ -18,13 +18,19 @@
 ?>
 <div class="clearfix"></div>
 <footer class="content-info" role="contentinfo">
-	<?php if($footer_top_bar): ?>
-		<div class="top_bar">
-			<div class="container">
-				<?php echo $footer_top_bar; ?>
-			</div> <!-- container -->
-		</div> <!-- topbar -->
-	<?php endif; ?>
+	<div class="top_bar">
+		<div class="container">
+			<?php if($footer_top_bar):
+				echo '<div class="float_left">'.$footer_top_bar.'</div>';
+			endif; ?>
+			<div class="float_right">
+				<a class="back-to-top" href="#top" title="Back to top">
+					Back to Top <span class="icon-arrow-up"></span>
+				</a>
+			</div>
+			<div class="clearfix"></div>
+		</div> <!-- container -->
+	</div> <!-- topbar -->
 	
 	<?php if(is_dynamic_sidebar('sidebar-footer')): ?>
 		<div class="mid_bar">

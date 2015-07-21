@@ -41,7 +41,7 @@ textarea {
 	
 	&:hover, &:focus {
 		
-		background: $alt2-colour;
+		background: $lightgrey;
 		color: $black;
 	}
 }
@@ -52,6 +52,7 @@ input[type="submit"] {
 	text-transform: uppercase;
 	background: $alt-colour;
 	color: white;
+	text-align: center;
 						
 	&:hover {
 		background: $alt2-colour;
@@ -97,9 +98,11 @@ button {
 	@include transition(all, .3s, ease-in);
 	//color: white;
 	
+/*
 	&:link, &:visited {
 		color: white;
 	}
+*/
 }
 
 /*
@@ -276,4 +279,85 @@ button {
         .custom-dropdown--large .custom-dropdown__select { padding-right: 1.3em }
         .custom-dropdown--small .custom-dropdown__select { padding-right: .5em }
     }
+}
+
+/* ------------------------------------------------------ Contact Form */
+.wpcf7, .infusion-form {
+	
+	input, textarea {
+		margin-bottom: 5px;
+	}
+	
+	label {
+		font-weight: 500;
+		margin-bottom: rem-calc(5px);
+		display: block;
+	}
+	
+	[class^="icon-"], [class*=" icon-"] {
+		font-size: rem-calc(10px);
+		position: relative;
+		top: rem-calc(-5px);
+		display: inline;
+		
+	}
+	
+	.icon-star {
+		
+		color: $main-colour;
+	}
+	
+	.infusion-option {
+		
+		label {
+			display: inline;
+		}
+	}
+	
+	img.ajax-loader {
+		width: auto;
+	}
+	
+	.wpcf7-checkbox, .wpcf7-radio {
+		display: block;
+		line-height: rem-calc(16px);
+		margin-bottom: rem-calc(15px);
+		margin-top: rem-calc(5px);
+	}
+	
+	.wpcf7-captchac, .infusion-captcha {
+		width: auto;
+		margin-bottom: rem-calc(5px);
+		display: inline-block;
+	}	
+	
+	.wpcf7-captchar, .infusion-captchar {
+		display: inline-block;
+		max-width: rem-calc(140px);
+		margin-bottom: rem-calc(10px);
+		margin-left: rem-calc(10px);
+		vertical-align: top;
+	}
+	
+	.wpcf7-submit, .infusion-submit {
+		width: 100%;
+		max-width: none;
+	}
+	
+	.wpcf7-mail-sent-ok, .wpcf7-validation-errors {
+		
+		background: rgb(61,169,94);
+		background: rgba(61,169,94,0.3);
+		padding: 5px;
+		padding: (5rem/16);
+		display: block;
+		font-weight: 500;
+	}
+	
+	.wpcf7-validation-errors {
+		
+		background: rgb(219,0,0);
+		background: rgba(219,0,0,0.3);
+	}
+	
 }

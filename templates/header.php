@@ -20,7 +20,7 @@
 ?>
 
 
-<header class="header" role="banner">
+<header class="header" role="banner" id="top">
 	<div class="topbar">
 		<div class="container">
 			<small class="float_left text_left header_phone"><a href="tel:<?php echo $phone_number; ?>" class="phone_link"><?php echo $phone_number; ?></a></small>

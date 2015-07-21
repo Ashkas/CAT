@@ -6,6 +6,7 @@
       ],
       "vendor": [
         "assets/scripts/plugins/hamburgler.js",
+        "assets/scripts/plugins/smooth-scroll.js",
         "assets/scripts/plugins/classie.js"
       ],
       "main": true
