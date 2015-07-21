@@ -6,13 +6,6 @@
 if( have_rows('content_blocks', 'option') && is_home() ):
 	
 	while ( have_rows('content_blocks', 'option') ) : the_row();
-	
-		// Find out if the coloured rows have been set. If they have then set a
-		if( (get_row_layout() == 'step_block' || get_row_layout() == 'video_block')):
-			$cta_big_margin = 'big_margin_top';
-			$icon_big_margin = 'big_margin_top';
-			$free_text_big_margin = 'big_margin_top';
-		endif;	
 		
 		if( (get_row_layout() == 'step_block')):
 
@@ -58,10 +51,10 @@ if( have_rows('content_blocks', 'option') && is_home() ):
 									<?php // if else on odds and evens
 									if($counter % 2 == 0) : ?>
 										<div class="col-sm-6 block_text">
-			<!-- 								<div class="col-md-9 col-lg-8"> -->
-												<?php echo '<h3 class="step_title margin_bottom">'.$title.'</h3>'; ?>
-												<?php echo '<p>'.$text.'</p>'; ?>
-			<!-- 								</div> -->
+		<!-- 								<div class="col-md-9 col-lg-8"> -->
+											<?php echo '<h3 class="step_title margin_bottom">'.$title.'</h3>'; ?>
+											<?php echo '<p>'.$text.'</p>'; ?>
+		<!-- 								</div> -->
 										</div>
 										<div class="col-sm-6 block_image margin_bottom">
 											<?php echo $small_image_open.do_free_height_picturefill($image).$small_image_close; ?>
@@ -71,11 +64,11 @@ if( have_rows('content_blocks', 'option') && is_home() ):
 											<?php echo $small_image_open.do_free_height_picturefill($image).$small_image_close;  ?>
 										</div>
 										<div class="col-sm-6 block_text">
-			<!-- 								<div class="col-md-9 col-lg-8"> -->
-												<?php echo '<h3 class="step_title margin_bottom">'.$title.'</h3>'; ?>
-												<?php echo '<p>'.$text.'</p>'; ?>
-												<?php if($add_cta_button) echo $button; ?>
-			<!-- 								</div> -->
+		<!-- 								<div class="col-md-9 col-lg-8"> -->
+											<?php echo '<h3 class="step_title margin_bottom">'.$title.'</h3>'; ?>
+											<?php echo '<p>'.$text.'</p>'; ?>
+											<?php if($add_cta_button) echo $button; ?>
+		<!-- 								</div> -->
 										</div>
 									<?php endif; ?>
 								</div>
@@ -87,15 +80,24 @@ if( have_rows('content_blocks', 'option') && is_home() ):
 			<?php endif; // blocks
       
 		elseif( (get_row_layout() == 'icon_block')):
-		
-			if($icon_big_margin): echo '<div class="big_margin_top">'; endif;
-					
-				$block_title = get_sub_field('block_title');
-				$blocks = get_sub_field('blocks');
-				
+							
+			$block_title = get_sub_field('block_title');
+			$blocks = get_sub_field('blocks');
+			$padding_above = get_sub_field('padding_above');
+			$padding_below = get_sub_field('padding_below');
+			
+			if($padding_above):
+				$big_margin_top = 'big_margin_top';
+			endif;
+			if($padding_below):
+				$big_margin_bottom = 'big_margin_bottom';
+			endif;
+			
+			if($padding_above || $padding_below): echo '<div class="'.$big_margin_top.' '.$big_margin_bottom.'">'; endif;
+			
 				if($block_title): ?>
 					<div class="container">
-						<div class="row big_margin_bottom">
+						<div class="big_margin_bottom">
 							<h2 class="home_title"><?php echo $block_title; ?></h2>
 						</div>
 					</div>
@@ -113,7 +115,7 @@ if( have_rows('content_blocks', 'option') && is_home() ):
 							
 							 // if else on odds and evens
 							if($counter == 1 || $counter == 4 || $counter == 7 ) : ?>
-								<div class="row big_margin_bottom icon_block_row">
+								<div class="big_margin_bottom icon_block_row">
 							<?php endif; ?>
 								<div class="col-sm-4 big_margin_bottom">
 									<?php if($image) echo '<div class="very_small_image margin_bottom">'.do_free_height_picturefill($image, $link, 'margin_auto').'</div>'; ?>
@@ -127,9 +129,9 @@ if( have_rows('content_blocks', 'option') && is_home() ):
 						<?php $counter++; endwhile; ?>
 					</div> <!-- container -->
 				<?php endif;
-				
-			if($icon_big_margin): echo '</div>'; endif;
-      
+					
+			if($padding_above || $padding_below): echo '</div>'; endif;
+				      
 		elseif( (get_row_layout() == 'video_block')):
 			
 			$block_title = get_sub_field('title');
@@ -163,26 +165,48 @@ if( have_rows('content_blocks', 'option') && is_home() ):
 			
 			$block_title = get_sub_field('title');
 			$url = get_sub_field('url');
-			$cta_button = get_cta_link_big($block_title,$url); ?>
+			$cta_button = get_cta_link_big($block_title,$url);
+			$padding_above = get_sub_field('padding_above');
+			$padding_below = get_sub_field('padding_below');
+			
+			if($padding_above):
+				$big_margin_top = 'big_margin_top';
+			endif;
+			if($padding_below):
+				$big_margin_bottom = 'big_margin_bottom';
+			endif;
+			
+			if($padding_above || $padding_below): echo '<div class="'.$big_margin_top.' '.$big_margin_bottom.'">'; endif; ?>
 			
 				<div class="container">				
 					<?php if($block_title): ?>
-						<div class="row big_margin_bottom  <?php echo $cta_big_margin; ?>">
-							<div class="col-sm-4 no_padding margin_auto">
-								<?php echo $cta_button; ?>
-							</div>
-							<div class="clearfix"></div>
+						<div class="col-sm-4 no_padding margin_auto">
+							<?php echo $cta_button; ?>
 						</div>
+						<div class="clearfix"></div>
 					<?php endif;?>
 				</div> <!-- container -->
       
-		<?php elseif( (get_row_layout() == 'free_text_content')):
+			<?php if($padding_above || $padding_below): echo '</div>'; endif;
 			
-			$free_text = get_sub_field('free_text');?>
+		elseif( (get_row_layout() == 'free_text_content')):
+			
+			$free_text = get_sub_field('free_text');
+			$padding_above = get_sub_field('padding_above');
+			$padding_below = get_sub_field('padding_below');
+			
+			if($padding_above):
+				$big_margin_top = 'big_margin_top';
+			endif;
+			if($padding_below):
+				$big_margin_bottom = 'big_margin_bottom';
+			endif;
+			
+			if($padding_above || $padding_below): echo '<div class="'.$big_margin_top.' '.$big_margin_bottom.'">'; endif;?>
 			
 				<div class="container">				
 					<?php if($free_text): ?>
-						<div class="row big_margin_bottom <?php echo $free_text_big_margin; ?>">
+						<div class="big_margin_bottom">
 							<div class="col-md-10 col-lg-9 margin_auto content no_padding">
 								<?php echo $free_text; ?>
 							</div>
@@ -191,42 +215,57 @@ if( have_rows('content_blocks', 'option') && is_home() ):
 					<?php endif;?>
 				</div> <!-- container -->
       
-		<?php elseif( (get_row_layout() == 'image_grid')):
+			<?php if($padding_above || $padding_below): echo '</div>'; endif;
+			
+		elseif( (get_row_layout() == 'image_grid')):
 					
 			$block_title = get_sub_field('block_title');
-			$images = get_sub_field('images'); ?>
-		
-			<?php if($block_title): ?>
-				<div class="container">
-					<div class="row big_margin_bottom">
-						<h2 class="home_title"><?php echo $block_title; ?></h2>
-					</div>
-				</div>
-			<?php endif;
-				
-		if(get_sub_field('images')): ?>
-				
-				<div class="container">
-					<div class="row big_margin_bottom logo_block">
-						<?php $counter = 1;
-						while(has_sub_field('images')):
-							
-							//variables
-							$title = get_sub_field('title');
-							$link = get_sub_field('link');
-							$image = get_sub_field('image'); ?>
-								
-							<div class="col-sm-3 margin_bottom">
-								<?php if($link): echo '<a href="'.$link.'" title="'.$title.'" target="_blank">'; endif; ?>
-								<?php if($image) echo '<div class="margin_bottom">'.do_free_height_picturefill($image, $link, 'margin_auto').'</div>'; ?>
-								<?php if($link): echo '</a>'; endif; ?>
-							</div>
-															
-						<?php $counter++; endwhile; ?>
-					</div> <!-- row -->
-				</div> <!-- container -->
-			<?php endif; // get_sub_field
+			$images = get_sub_field('images');
+			$padding_above = get_sub_field('padding_above');
+			$padding_below = get_sub_field('padding_below');
 			
+			if($padding_above):
+				$big_margin_top = 'big_margin_top';
+			endif;
+			if($padding_below):
+				$big_margin_bottom = 'big_margin_bottom';
+			endif; 
+			
+			if($padding_above || $padding_below): echo '<div class="'.$big_margin_top.' '.$big_margin_bottom.'">'; endif;?>
+		
+				<?php if($block_title): ?>
+					<div class="container">
+						<div class="big_margin_bottom">
+							<h2 class="home_title"><?php echo $block_title; ?></h2>
+						</div>
+					</div>
+				<?php endif;
+					
+				if(get_sub_field('images')): ?>
+					
+					<div class="container">
+						<div class="row big_margin_bottom logo_block">
+							<?php $counter = 1;
+							while(has_sub_field('images')):
+								
+								//variables
+								$title = get_sub_field('title');
+								$link = get_sub_field('link');
+								$image = get_sub_field('image'); ?>
+									
+								<div class="col-sm-3 margin_bottom">
+									<?php if($link): echo '<a href="'.$link.'" title="'.$title.'" target="_blank">'; endif; ?>
+									<?php if($image) echo '<div class="margin_bottom">'.do_free_height_picturefill($image, $link, 'margin_auto').'</div>'; ?>
+									<?php if($link): echo '</a>'; endif; ?>
+								</div>
+																
+							<?php $counter++; endwhile; ?>
+						</div> <!-- row -->
+					</div> <!-- container -->
+				<?php endif; // get_sub_field
+					
+			if($padding_above || $padding_below): echo '</div>'; endif;
+				
 		endif; //get_layout_row
 		
 	endwhile; //have_rows
@@ -234,13 +273,6 @@ if( have_rows('content_blocks', 'option') && is_home() ):
 elseif( have_rows('content_blocks') && !is_home() ):
 	
 	while ( have_rows('content_blocks') ) : the_row();	
-		
-		// Find out if the coloured rows have been set. If they have then set a
-		if( (get_row_layout() == 'step_block' || get_row_layout() == 'video_block')):
-			$cta_big_margin = 'big_margin_top';
-			$icon_big_margin = 'big_margin_top';
-			$free_text_big_margin = 'big_margin_top';
-		endif;
 		
 		if( (get_row_layout() == 'step_block')):
 
@@ -300,12 +332,21 @@ elseif( have_rows('content_blocks') && !is_home() ):
 			<?php endif; 
       
 		elseif( (get_row_layout() == 'icon_block')):
+								
+			$block_title = get_sub_field('block_title');
+			$blocks = get_sub_field('blocks');
+			$padding_above = get_sub_field('padding_above');
+			$padding_below = get_sub_field('padding_below');
 			
-			if($icon_big_margin): echo '<div class="big_margin_top">'; endif;
-					
-				$block_title = get_sub_field('block_title');
-				$blocks = get_sub_field('blocks'); ?>
+			if($padding_above):
+				$big_margin_top = 'big_margin_top';
+			endif;
+			if($padding_below):
+				$big_margin_bottom = 'big_margin_bottom';
+			endif; 
 			
+			if($padding_above || $padding_below): echo '<div class="'.$big_margin_top.' '.$big_margin_bottom.'">'; endif;?>
+		
 				<?php if($block_title): ?>
 					<div class="container">
 						<div class="row big_margin_bottom">
@@ -341,8 +382,8 @@ elseif( have_rows('content_blocks') && !is_home() ):
 						<?php $counter++; endwhile; ?>
 					</div> <!-- container -->
 				<?php endif; // get_sub_field
-
-			if($icon_big_margin): echo '</div>'; endif;
+					
+			if($padding_above || $padding_below): echo '</div>'; endif;
       
 		elseif( (get_row_layout() == 'video_block')):
 			
@@ -354,13 +395,13 @@ elseif( have_rows('content_blocks') && !is_home() ):
 					<div class="big_margin_top">
 				
 						<?php if($block_title): ?>
-							<div class="row big_margin_bottom">
+							<div class="big_margin_bottom">
 								<h2 class="home_title"><?php echo $block_title; ?></h2>
 							</div>
 						<?php endif;
 							
 						if($video): ?>
-							<div class="row big_margin_bottom">
+							<div class="big_margin_bottom">
 								<div class="col-lg-8 no_padding margin_auto">
 									<div class="embed_container">
 										<?php echo $video; ?>
@@ -377,11 +418,22 @@ elseif( have_rows('content_blocks') && !is_home() ):
 			
 			$block_title = get_sub_field('title');
 			$url = get_sub_field('url');
-			$cta_button = get_cta_link_big($block_title,$url); ?>
+			$cta_button = get_cta_link_big($block_title,$url);
+			$padding_above = get_sub_field('padding_above');
+			$padding_below = get_sub_field('padding_below');
+			
+			if($padding_above):
+				$big_margin_top = 'big_margin_top';
+			endif;
+			if($padding_below):
+				$big_margin_bottom = 'big_margin_bottom';
+			endif; 
+			
+			if($padding_above || $padding_below): echo '<div class="'.$big_margin_top.' '.$big_margin_bottom.'">'; endif;?>
 			
 				<div class="container">				
 					<?php if($block_title): ?>
-						<div class="row big_margin_bottom <?php echo $cta_big_margin; ?>">
+						<div class="big_margin_bottom">
 							<div class="col-sm-4 no_padding margin_auto">
 								<?php echo $cta_button; ?>
 							</div>
@@ -390,13 +442,26 @@ elseif( have_rows('content_blocks') && !is_home() ):
 					<?php endif;?>
 				</div> <!-- container -->
       
-		<?php elseif( (get_row_layout() == 'free_text_content')):
+			<?php if($padding_above || $padding_below): echo '</div>'; endif;
 			
-			$free_text = get_sub_field('free_text');?>
+		elseif( (get_row_layout() == 'free_text_content')):
+			
+			$free_text = get_sub_field('free_text');
+			$padding_above = get_sub_field('padding_above');
+			$padding_below = get_sub_field('padding_below');
+			
+			if($padding_above):
+				$big_margin_top = 'big_margin_top';
+			endif;
+			if($padding_below):
+				$big_margin_bottom = 'big_margin_bottom';
+			endif;
+			
+			if($padding_above || $padding_below): echo '<div class="'.$big_margin_top.' '.$big_margin_bottom.'">'; endif;?>
 			
 				<div class="container">				
 					<?php if($free_text): ?>
-						<div class="row big_margin_bottom <?php echo $free_text_big_margin; ?>">
+						<div class="big_margin_bottom">
 							<div class="col-md-10 col-lg-9 margin_auto content no_padding">
 								<?php echo $free_text; ?>
 							</div>
@@ -405,41 +470,57 @@ elseif( have_rows('content_blocks') && !is_home() ):
 					<?php endif;?>
 				</div> <!-- container -->
       
-		<?php elseif( (get_row_layout() == 'image_grid')):
+			<?php if($padding_above || $padding_below): echo '</div>'; endif;
+			
+		elseif( (get_row_layout() == 'image_grid')):
 					
 			$block_title = get_sub_field('block_title');
-			$images = get_sub_field('images'); ?>
+			$images = get_sub_field('images');
+			$padding_above = get_sub_field('padding_above');
+			$padding_below = get_sub_field('padding_below');
+			
+			if($padding_above):
+				$big_margin_top = 'big_margin_top';
+			endif;
+			if($padding_below):
+				$big_margin_bottom = 'big_margin_bottom';
+			endif; 
+			
+			if($padding_above || $padding_below): echo '<div class="'.$big_margin_top.' '.$big_margin_bottom.'">'; endif;?>
 		
-			<?php if($block_title): ?>
-				<div class="container">
-					<div class="row big_margin_bottom">
-						<h2 class="home_title"><?php echo $block_title; ?></h2>
+				<?php if($block_title): ?>
+					<div class="container">
+						<div class="big_margin_bottom">
+							<h2 class="home_title"><?php echo $block_title; ?></h2>
+						</div>
 					</div>
-				</div>
-			<?php endif;
-				
-			if(get_sub_field('images')): ?>
-				
-				<div class="container">
-					<div class="row big_margin_bottom logo_block">
-						<?php $counter = 1;
-						while(has_sub_field('images')):
-							
-							//variables
-							$title = get_sub_field('title');
-							$link = get_sub_field('link');
-							$image = get_sub_field('image'); ?>
+				<?php endif;
+					
+				if(get_sub_field('images')): ?>
+					
+					<div class="container">
+						<div class="row big_margin_bottom images_grid">
+							<?php $counter = 1;
+							while(has_sub_field('images')):
 								
-							<div class="col-sm-3 margin_bottom">
-								<?php if($link): echo '<a href="'.$link.'" title="'.$title.'" target="_blank">'; endif; ?>
-								<?php if($image) echo '<div class="margin_bottom">'.do_free_height_picturefill($image, $link, 'margin_auto').'</div>'; ?>
-								<?php if($link): echo '</a>'; endif; ?>
-							</div>
-															
-						<?php $counter++; endwhile; ?>
-					</div> <!-- row -->
-				</div> <!-- container -->
-			<?php endif; // get_sub_field
+								//variables
+								$title = get_sub_field('title');
+								$link = get_sub_field('link');
+								$image = get_sub_field('image'); ?>
+									
+								<div class="image_grid_item margin_bottom">
+									<?php if($link): echo '<a href="'.$link.'" title="'.$title.'" target="_blank">'; endif; ?>
+									<?php if($image) echo '<span></span>'.do_free_height_picturefill($image, $link, 'margin_auto').''; ?>
+									<?php if($link): echo '</a>'; endif; ?>
+								</div>
+																
+							<?php $counter++; endwhile; ?>
+							<div class="clearfix"></div>
+						</div> <!-- row -->
+					</div> <!-- container -->
+				<?php endif; // get_sub_field
+					
+			if($padding_above || $padding_below): echo '</div>'; endif;
 			
 		endif; //get_layout_row
 		

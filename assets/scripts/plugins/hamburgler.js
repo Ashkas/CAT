@@ -2,9 +2,7 @@
 
 function togglescroll () {
   jQuery('body').on('touchstart', function(e){
-    if (jQuery('body').hasClass('noscroll')) {
-      e.preventDefault();
-    }
+    
   });
 }
 

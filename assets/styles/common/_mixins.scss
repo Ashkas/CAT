@@ -201,13 +201,14 @@
 	
 	&:link, &:visited {
 		background: $alt2-colour;
-		color: white;	
+		color: $darkgrey;	
 		text-shadow: none;
 		
 	}
 	
 	&:hover, &:focus {
 		background: $alt-colour;
+		color: white;
 		text-decoration: none;
 	}
 	

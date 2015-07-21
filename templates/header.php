@@ -24,7 +24,7 @@
 	<div class="topbar">
 		<div class="container">
 			<small class="float_left text_left header_phone"><a href="tel:<?php echo $phone_number; ?>" class="phone_link"><?php echo $phone_number; ?></a></small>
-			<small class="float_right text_right"><a href="<?php echo $home_url; ?>/users/sign_up" title="Sign up to Counselling at Home Account">Sign up</a> <a href="<?php echo $home_url; ?>/login" title="Login to your Counselling at Home Account">Login</a> <?php if($cta_button) echo $cta_button?></small>				
+			<small class="float_right text_right links"><a href="<?php echo $home_url; ?>/users/sign_up" title="Sign up to Counselling at Home Account">Sign up</a> <a href="<?php echo $home_url; ?>/login" title="Login to your Counselling at Home Account">Login</a> <?php if($cta_button) echo $cta_button?></small>				
 			<div class="clearfix"></div>
 		</div> <!-- container -->
 	</div> <!-- topbar -->

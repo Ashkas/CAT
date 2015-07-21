@@ -7,7 +7,7 @@
 	
 	.big_margin_bottom {
 		
-		margin-bottom: 0px;
+		//margin-bottom: 0px;
 	}
 }
 
@@ -91,15 +91,35 @@
 }
 
 
-.logo_block {
+.images_grid {
+	
+	@include mappy-bp($mobile-wide) {
+		-moz-column-count:    2;
+		-webkit-column-count: 2;
+		-ms-column-count: 2;
+		-o-column-count: 2;
+		column-count:         2;
+	}
 	
 	@include mappy-bp($tab) {
-		
-		[class^="col-"], [class*=" col-"] {
-			
-			&:nth-child(4n+5) {
-				clear: left;
-			}	
-		}
+		-moz-column-count:    4;
+		-webkit-column-count: 4;
+		-ms-column-count: 4;
+		-o-column-count: 4;
+		column-count:         4;
+	}
+	
+	@include mappy-bp($desk) {
+		-moz-column-count:    6;
+		-webkit-column-count: 6;
+		-ms-column-count: 6;
+		-o-column-count: 6;
+		column-count:         6;
+	}
+	
+	img {
+		/* Just in case there are inline attributes */
+		width: 100% !important;
+		height: auto !important;
 	}
 }

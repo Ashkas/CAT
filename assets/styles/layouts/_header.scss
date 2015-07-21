@@ -28,6 +28,16 @@ header[role="banner"] {
 			visibility: hidden;
 		}
 		
+		@include mappy-bp(max-width $desk) {
+			
+			.links {
+				
+				a {
+					margin-left: rem-calc(10px);
+				}
+			}
+		}
+		
 		@include mappy-bp($tab) {
 			
 			.header_phone {

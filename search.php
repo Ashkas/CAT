@@ -19,7 +19,7 @@ use Roots\Sage\Config;
 		<?php get_template_part('templates/content', 'search'); ?>
 	<?php endwhile; ?>
 	
-	<?php the_posts_navigation(); ?>
+	<?php search_nav(); ?>
 
 <?php if (!(Config\display_sidebar())) : ?>
 	</div>

@@ -22,5 +22,14 @@
 	
 	a {
 		text-shadow: none;
+		
+		&:hover, &:focus {
+			color: $alt-colour;
+		}
+	}
+	
+	li {
+		position: relative;
+		z-index: 99999;
 	}
 }

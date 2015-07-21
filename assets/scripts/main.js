@@ -95,13 +95,13 @@
 				}
 
 				// As the window is resized check what is required and refire on delay
-				$(window).resize(function() {
+				//$(window).resize(function() {
 				    waitForFinalEvent(function() {
 					    //header_waypoint();
 						large_header_waypoint();
 						mobile_header_waypoint();
 					}, 0);
-				}).resize();
+				//}).resize();
 			},
 		});
 		

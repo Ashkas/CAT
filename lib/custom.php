@@ -248,3 +248,20 @@ class Short_Name_Walker extends Walker_Page {
         }
     }
 }
+
+// NAvigation
+
+// Search form
+
+function search_nav() {
+	
+	global $wp_query;
+	
+	if ( $wp_query->max_num_pages > 1 ) : ?>
+		<nav class="margin_bottom pagination" role="navigation">
+			<div class="nav-previous float_left"><?php previous_posts_link( __( '<span class="icon-arrow-left" title="previous"></span> <span class="nav_text">Previous</span>', $wp_query->max_num_pages ) ); ?></div>
+			<div class="nav-next float_right"><?php next_posts_link( __( '<span class="nav_text">Next</span> <span class="icon-arrow-right" title="next"></span>', $wp_query->max_num_pages ) ); ?></div>
+			<div class="clearfix"></div>
+		</nav> <!-- #<?php echo $html_id; ?> .navigation -->
+	<?php endif;
+}
