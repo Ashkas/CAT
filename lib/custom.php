@@ -1,18 +1,19 @@
 <?php
 
 //Get link from ACF fields
-function get_cta_link( $text = '', $url = '' ) {
+function get_cta_link( $text = '', $url = '', $class = NULL ) {
+	
   $output = '';
   if(!empty($url) && !empty($text)) {
-    $output = '<a href="'. $url .'" class="cta_button">'. $text .'</a>';
+    $output = '<a href="'. $url .'" class="cta_button '.$class.'">'. $text .'</a>';
   }
   return $output;
 }
 
-function get_cta_link_alt( $text = '', $url = '' ) {
+function get_cta_link_alt( $text = '', $url = '', $class = NULL ) {
   $output = '';
   if(!empty($url) && !empty($text)) {
-    $output = '<a href="'. $url .'" class="cta_button cta_button_alt">'. $text .'</a>';
+    $output = '<a href="'. $url .'" class="cta_button cta_button_alt '.$class.'">'. $text .'</a>';
   }
   return $output;
 }

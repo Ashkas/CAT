@@ -52,9 +52,9 @@ if( $banners ): ?>
 						while(has_sub_field('homepage_banner_cta', 'option')):
 							
 							if($counter == 1):
-								$link = get_cta_link_alt(get_sub_field('title'),get_sub_field('url'));
+								$link = get_cta_link_alt(get_sub_field('title'),get_sub_field('url'), 'big_button');
 							else:
-								$link = get_cta_link(get_sub_field('title'),get_sub_field('url'));
+								$link = get_cta_link(get_sub_field('title'),get_sub_field('url'), 'big_button');
 							endif;
 							
 							if($link): ?>
