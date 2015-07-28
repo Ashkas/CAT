@@ -19,6 +19,12 @@
     'common': {
       init: function() {
 	    
+	    $("#smooth-scroll").click(function () {
+		    $('html, body').animate({
+		        scrollTop: $('#top').offset().top
+		    }, 'slow');
+		});
+	    
 	    // WAYPOINTS for header scripts
 	    
 	    // Function so window size check fires on resize event too
