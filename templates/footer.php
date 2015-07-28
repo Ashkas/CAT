@@ -24,7 +24,7 @@
 				echo '<div class="float_left">'.$footer_top_bar.'</div>';
 			endif; ?>
 			<div class="float_right">
-				<a class="back-to-top" href="#top" title="Back to top">
+				<a class="back-to-top" id="smooth-scroll" title="Back to top">
 					Back to Top <span class="icon-arrow-up"></span>
 				</a>
 			</div>
@@ -66,7 +66,7 @@
 							endif;
 							
 							if($footer_logo):
-								echo'<div class="footer_logo"><img src="'.$footer_logo[0].'"</div>';
+								echo'<div class="footer_logo"><a href="'.home_url().'"><img src="'.$footer_logo[0].'></a>"</div>';
 							endif; ?>
 						</div>
 					<?php endif; ?>
