@@ -84,6 +84,7 @@ endif;  //function_exists
 				
 				$args = array(
 					'child_of' => $post_id,
+					'sort_column' => 'menu_order',
 					'post_type' => 'page',
 					'post_status' => 'publish',
 				);

@@ -1,4 +1,6 @@
-	<?php //ACG Varibales
+	<?php
+		
+	//ACF Varibales
 	if(function_exists('get_field')):
 		// Top
 		$footer_top_bar = get_field('footer_top_bar', 'option');
@@ -15,6 +17,10 @@
 			$footer_logo = wp_get_attachment_image_src($get_footer_logo,'full');
 		endif;
 	endif;	
+	
+	// WP variables
+	$home_url = home_url();
+	$site_title = get_bloginfo('name');
 ?>
 <div class="clearfix"></div>
 <footer class="content-info" role="contentinfo">
@@ -66,7 +72,7 @@
 							endif;
 							
 							if($footer_logo):
-								echo'<div class="footer_logo"><a href="'.home_url().'"><img src="'.$footer_logo[0].'></a>"</div>';
+								echo '<div class="footer_logo"><a href="'.$home_url.'" title="'.$site_title.' home"><img src="'.$footer_logo[0].'" alt="'.$site_title.' logo"></a></div>';
 							endif; ?>
 						</div>
 					<?php endif; ?>
