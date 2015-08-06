@@ -1,7 +1,7 @@
-<?php get_template_part('templates/page', 'header'); ?>
+<?php //get_template_part('templates/page', 'header'); ?>
 
-<div class="alert alert-warning">
+<blockquote class="alert alert-warning big_margin_bottom centre_text">
   <?php _e('Sorry, but the page you were trying to view does not exist.', 'sage'); ?>
-</div>
+</blockquote>
 
 <?php get_search_form(); ?>

@@ -173,7 +173,7 @@ header[role="banner"] {
 	}
 	
 	.header_mobile_icons {
-		height: rem-calc(50px);
+		height: rem-calc(64px);
 		display: block;
 		text-align: right;
 		
@@ -181,7 +181,7 @@ header[role="banner"] {
 		
 		[class^="icon-"], [class*=" icon-"] {
 			
-			line-height: rem-calc(50px);
+			line-height: rem-calc(64px);
 			font-size: rem-calc(20px);
 			vertical-align: middle;
 			margin-right: rem-calc(5px);
@@ -191,6 +191,7 @@ header[role="banner"] {
 			}
 			
 			@include mappy-bp($desk) {
+				line-height: rem-calc(50px);
 				text-align: right;
 			}
 		}
@@ -201,6 +202,7 @@ header[role="banner"] {
 		}
 		
 		@include mappy-bp($desk) {
+			height: rem-calc(50px);
 			margin-top: rem-calc(36px);
 		}
 	}
@@ -244,8 +246,8 @@ header[role="banner"] {
 	
 	.brand {
 		display: block;
-		padding-top: rem-calc(10px);
-		padding-bottom: rem-calc(10px);
+		padding-top: rem-calc(15px);
+		padding-bottom: rem-calc(15px);
 		
 		@include mappy-bp($desk) {
 			

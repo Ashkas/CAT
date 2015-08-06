@@ -1,6 +1,6 @@
 <?php use Roots\Sage\Titles; ?>
 
-<?php if((is_page() || is_single() || is_search()) && !is_home()) : 
+<?php if((is_page() || is_single() || is_404() || is_search()) && !is_home()) : 
 	
 	if(is_page()):
 		$featured_image = do_page_feature_picturefill(get_post_thumbnail_id());
