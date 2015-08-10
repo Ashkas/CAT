@@ -182,7 +182,8 @@ header[role="banner"] {
 		[class^="icon-"], [class*=" icon-"] {
 			
 			line-height: rem-calc(64px);
-			font-size: rem-calc(20px);
+			font-size: rem-calc(18px);
+			font-weight: bold;
 			vertical-align: middle;
 			margin-right: rem-calc(5px);
 			
@@ -198,7 +199,7 @@ header[role="banner"] {
 		
 		@include mappy-bp($mobile-wide) {
 			
-			text-align: center;
+			text-align: right;
 		}
 		
 		@include mappy-bp($desk) {
@@ -258,7 +259,7 @@ header[role="banner"] {
 		img {
 			display: block;
 			max-width: rem-calc(205px);
-			//margin: 0px auto;
+			margin: 0px auto;
 			
 			@include mappy-bp($desk) {
 				max-width: rem-calc(320px);

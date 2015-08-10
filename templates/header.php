@@ -31,31 +31,30 @@
 		
 	<div class="midbar">
 		<div class="container mobile_scroll_hide">
-<!-- 			<div class="row"> -->
-				<div class="col-xs-9 brand_col no_padding">
-					<a class="brand" href="<?php echo $home_url; ?>">
-						<!--[if lte IE 8]><img src="<?php echo $template_directory; ?>/assets/images/logo-horizontal.png" alt="Counselling at Home"/><![endif]-->	
-						<img src="<?php echo $template_directory; ?>/assets/images/logo-horizontal.svg" alt="Counselling at Home"/>
-					</a>
-				</div>
-				<div class="col-xs-1 header_search header_mobile_icons">
-					<span class="icon-search" id="search_toggle"></span>
-				</div>
+			
+			<div class="col-xs-1 header_hamburger_menu header_mobile_icons no_padding">	
+				<a href="javascript:void(0)" class="icon">
+					<div class="hamburger">
+					<div class="menui top-menu"></div>
+					<div class="menui mid-menu"></div>
+					<div class="menui bottom-menu"></div>
+					</div>
+				</a>
+			</div>
+			
+			<div class="col-xs-10 brand_col no_padding">
+				<a class="brand" href="<?php echo $home_url; ?>">
+					<!--[if lte IE 8]><img src="<?php echo $template_directory; ?>/assets/images/logo-horizontal.png" alt="Counselling at Home"/><![endif]-->	
+					<img src="<?php echo $template_directory; ?>/assets/images/logo-horizontal.svg" alt="Counselling at Home"/>
+				</a>
+			</div>
+			<div class="col-xs-1 header_search header_mobile_icons">
+				<span class="icon-search" id="search_toggle"></span>
+			</div>
+			
+			<?php include(locate_template( 'templates/menu-primary.php' )); ?>
+			<div class="clearfix"></div>
 				
-				<div class="col-xs-2 header_hamburger_menu header_mobile_icons">	
-					<a href="javascript:void(0)" class="icon">
-						<div class="hamburger">
-						<div class="menui top-menu"></div>
-						<div class="menui mid-menu"></div>
-						<div class="menui bottom-menu"></div>
-						</div>
-					</a>
-				</div>
-				
-				<?php include(locate_template( 'templates/menu-primary.php' )); ?>
-				<div class="clearfix"></div>
-				
-<!-- 			</div> --> <!-- row -->
 		</div> <!-- mobile_scroll_hide -->
 		
 		<?php if($cta_button): ?>
