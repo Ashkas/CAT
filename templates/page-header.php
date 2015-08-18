@@ -6,7 +6,7 @@
 		$featured_image = do_page_feature_picturefill(get_post_thumbnail_id());
 	endif;
 	
-	if(get_the_post_thumbnail($post->ID)): ?>
+	if(get_the_post_thumbnail($post->ID) && is_page()): ?>
 	
 		<div class="featured_header_wrapper">
 			

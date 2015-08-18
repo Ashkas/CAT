@@ -46,4 +46,18 @@ add_action('init',  __NAMESPACE__ . '\\custom_page_excerpts');
     }
     return $templates; // Return our modified array with base-$cpt.php at the front of the queue
   }
+  
+ // Change base for Custom Post Types
+ // Ref: https://roots.io/sage/docs/theme-wrapper/
+ add_filter('sage/wrap_base', __NAMESPACE__ . '\\sage_wrap_base_cpts'); // Add our function to the sage/wrap_base filter
+
+  function sage_wrap_base_cpts($templates) {
+    $cpt = get_post_type(); // Get the current post type
+    if ($cpt) {
+       array_unshift($templates, 'base-' . $cpt . '.php'); // Shift the template to the front of the array
+    }
+    return $templates; // Return our modified array with base-$cpt.php at the front of the queue
+  }
+ 
+ 
  ?>

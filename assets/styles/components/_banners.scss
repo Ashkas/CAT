@@ -47,36 +47,41 @@
 	}
 	
 	ul.cta_buttons {
+			
+		.cta_button, .cta_button_alt {
+			
+			padding: rem-calc(10px) rem-calc(5px);
+		}
 		
-		padding: 0px;
-		text-align: center;
-		display: block;
+	}
+
+}
+
+ul.cta_buttons {
 		
-		li {
-			list-style-type: none;
+	padding: 0px;
+	text-align: center;
+	display: block;
+	
+	li {
+		list-style-type: none;
+		
+		&:last-child {
+			margin-top: rem-calc(20px);
+		}
+		
+		@include mappy-bp($tab) {
+			
+			display: inline-block;
+			width: 45%;
+			
+			&:first-child {
+				margin-right: 5%;
+			}	
 			
 			&:last-child {
-				margin-top: rem-calc(20px);
+				margin-top: 0px;
 			}
-			
-			.cta_button, .cta_button_alt {
-				
-				padding: rem-calc(10px) rem-calc(5px);
-			}
-			
-			@include mappy-bp($tab) {
-				
-				display: inline-block;
-				width: 45%;
-				
-				&:first-child {
-					margin-right: 5%;
-				}	
-				
-				&:last-child {
-					margin-top: 0px;
-				}
-			}
-		}		
-	}
+		}
+	}		
 }

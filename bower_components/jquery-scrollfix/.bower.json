@@ -1,0 +1,32 @@
+{
+  "name": "jquery-scrollfix",
+  "description": "jQuery plugin for making an element fixed when it goes out of view.",
+  "version": "2.0.1",
+  "keywords": [
+    "js",
+    "jquery",
+    "scroll",
+    "fix",
+    "fixed",
+    "position"
+  ],
+  "main": [
+    "src/scrollfix.js"
+  ],
+  "ignore": [
+    ".*"
+  ],
+  "dependencies": {
+    "jquery": ">= 1.9.0"
+  },
+  "homepage": "https://github.com/ShiraNai7/jquery-scrollfix",
+  "_release": "2.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.0.1",
+    "commit": "9667b9c6564c1c233360ca8810183cbce9f3e6dd"
+  },
+  "_source": "git://github.com/ShiraNai7/jquery-scrollfix.git",
+  "_target": "~2.0.1",
+  "_originalSource": "jquery-scrollfix"
+}

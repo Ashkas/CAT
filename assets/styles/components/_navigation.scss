@@ -25,3 +25,13 @@
 	
 	font-size: 80%;
 }
+
+.menu {
+	
+	&.contextual_menu {
+	
+		font-size: 90%;
+		font-family: $titleFont;
+		@include block-border;
+	}
+}

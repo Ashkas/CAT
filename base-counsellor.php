@@ -6,7 +6,6 @@ use Roots\Sage\Wrapper;
 
 // ACF variables
 if(function_exists('get_field')):
-	$page_show_children = get_field('page_show_children');
 	$page_show_team_member = get_field('page_show_team_member');
 	
 	if($page_show_team_member):
@@ -30,8 +29,17 @@ endif;  //function_exists
       get_template_part('templates/header');
     ?>
     <div role="document" id="page">
-	     <?php get_template_part( 'templates/page', 'header' ); ?>
-		 	<div class="wrap container">
+	    <?php get_template_part( 'templates/counsellor', 'header' ); ?>
+	    
+	    <?php if(is_single()): ?>
+		 	<div class="wrap container" itemscope itemtype="http://data-vocabulary.org/Person">
+			 	
+			 	<div class="centre_text border_bottom">
+				    <ul class="inline_list menu">
+					    <li><a href="<?php echo get_post_type_archive_link( 'counsellor' ); ?>" title="View all Counsellors">All Counsellors</a></li>
+				    </ul>
+			    </div>
+			 	
 		    	<div class="content row">
 		        	<main class="main big_margin_bottom" role="main">
 						<?php include Wrapper\template_path(); ?>
@@ -44,83 +52,7 @@ endif;  //function_exists
 		    	</div><!-- /.content -->
 		    </div><!-- /.wrap -->
 		    
-		    <?php include(locate_template( 'flexible_content/block-1.php' )); 			   
-				
-			if($page_show_children):
-			
-				// Check to see if coloured content blocks are set. If they are, then we want an extra space above the page children blocks
-				if( have_rows('content_blocks')):
-					
-					while ( have_rows('content_blocks') ) : the_row();
-					
-						// Find out if the coloured rows have been set. If they have then set a
-						if( (get_row_layout() == 'step_block' || get_row_layout() == 'video_block')):
-							$big_margin_top = 'big_margin_top';
-						endif;	
-					endwhile;
-				endif;
-				
-				//Work out what level page this is
-				$parent = $post->post_parent;
-				
-				if($parent):
-					$grandparent_get = get_post($parent);
-					$has_grandparent = $grandparent_get->post_parent;
-					
-					if(has_children()):
-						$middle = true;
-					endif;	
-				endif;
-				
-				if($has_grandparent):
-					$post_id = $parent;
-				elseif(!($has_grandparent || $middle) && $parent):
-					$post_id = $parent;
-				elseif($middle == true):
-					$post_id = $post->ID;
-				else:
-					$post_id = $post->ID;
-				endif;
-				
-				$args = array(
-					'child_of' => $post_id,
-					'sort_column' => 'menu_order',
-					'post_type' => 'page',
-					'post_status' => 'publish',
-				);
-					
-				$query = null;
-							
-				$key = 'child-pages-'.$post_id;
-													
-				$query = wp_cache_get( $key, $group );
-							
-				if ( $query == '' ) {
-				    $query = get_pages( $args );
-					wp_cache_set( $key, $query, $group, $expire );
-				}
-												
-				if($query):		
-					$counter = 1;
-					// count the rows to test for the final row. Add +1 to match the counter
-					$query_count = count($query) + 1;
-					echo '<div class="blocks big_margin_bottom '.$big_margin_top.'">';	
-						foreach( $query as $post ) : setup_postdata($post);
-							
-							// if it is the first row
-							if ($counter++ % 2 == 1 ) echo '<div class="flex_row container">';
-								get_template_part('loops/blocks');
-							// if it is every 2nd plus one row
-							if ($counter % 2 == 1 ) echo '</div>';
-						//$counter++ ; 
-						endforeach;
-					echo '</div>';
-					// Check if it the final row and it is an uneven number
-					if (!($counter % 2 == 1) && ($counter == $query_count) ) echo '</div>';
-					echo '<div class="clearfix"></div>';
-				endif; //end query
-				wp_reset_postdata();  
-			endif; 
+		    <?php include(locate_template( 'flexible_content/block-1.php' ));  
 			
 			if($team_blocks):
 				shuffle($team_blocks);
@@ -159,6 +91,34 @@ endif;  //function_exists
 					endforeach;
 				echo '</div></div></div>';
 			endif;   
+			
+		endif; //is_single
+		
+		if(is_archive()): ?>
+			
+			<div class="wrap container">
+				
+				<?php if(is_tax()): ?>
+					<div class="centre_text border_bottom">
+					    <ul class="inline_list menu contextual_menu">
+						    <li><a href="<?php echo get_post_type_archive_link( 'counsellor' ); ?>" title="View all Counsellors">All Counsellors</a></li>
+					    </ul>
+				    </div>
+				<?php endif; ?>
+				
+		    	<div class="content">
+		        	<main class="main big_margin_bottom" role="main">
+						<?php include Wrapper\template_path(); ?>
+		        	</main><!-- /.main -->
+			        <?php if (Config\display_sidebar()) : ?>
+				        <aside class="sidebar" role="complementary">
+				        <?php include Wrapper\sidebar_path(); ?>
+				        </aside><!-- /.sidebar -->
+			        <?php endif; ?>
+		    	</div><!-- /.content -->
+		    </div><!-- /.wrap -->
+			
+		<?php endif; // is_archive 
 			
 		do_action('get_footer');
 		get_template_part('templates/footer');

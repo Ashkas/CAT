@@ -151,6 +151,23 @@ header[role="banner"] {
 					visibility: hidden;
 				}
 			}
+			
+			// Remember there is another version in navigation.scss
+			@include mappy-bp($desk) {
+				
+				.mobilenav {
+					margin-top: rem-calc(20px);
+				}
+				
+				.header_mobile_icons {
+					
+					[class*=" icon-"], [class^="icon-"] {
+						
+						display: block;
+						margin-top: rem-calc(7px);
+					}
+				}
+			}
 		}		
 		
 	}
@@ -263,6 +280,7 @@ header[role="banner"] {
 			
 			@include mappy-bp($desk) {
 				max-width: rem-calc(320px);
+				margin: 0px;
 			}
 		}
 	}

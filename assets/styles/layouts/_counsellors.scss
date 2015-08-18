@@ -1,0 +1,54 @@
+.profile_header {
+	
+	p {
+		margin: 0px;
+		padding: 0px;
+	}
+	
+	small {
+		
+		display: block;
+	}
+	
+	@include mappy-bp($tab){
+		
+		p, small {
+			
+			text-align: center;
+		}
+		
+		.page-header {
+			
+			margin-top: 0px;
+			margin-bottom: rem-calc(10px);
+			
+		}
+	}
+}
+
+.profile_header_image {
+	
+	.page-header {
+			
+		margin: rem-calc(20px) 0px;
+		
+	}
+	
+	@include mappy-bp($tab){
+		
+		p, small {
+			
+			text-align: left;
+		}
+		
+		.page-header {
+			
+			margin-left: rem-calc(30px);
+			margin-bottom: 0px;
+			
+			h1 {
+				text-align: left;
+			}
+		}
+	}
+}

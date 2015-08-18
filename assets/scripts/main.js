@@ -19,6 +19,18 @@
     'common': {
       init: function() {
 	    
+	    // Match height for elements where rows need to match
+	    // Do a foreach on each row as per http://stackoverflow.com/questions/30912069/jquery-match-height-not-working-on-first-row
+	    
+		$(function() {
+		    $('.equal_height_items').each(function(i, elem) {
+		        $(elem)
+		            .find('.hentry')   // Only children of this row
+		            .matchHeight({byRow: false}); // Row detection gets confused so disable it
+		    });
+		});
+	    
+	    // Smooth Scroll from the top
 	    $("#smooth-scroll").click(function () {
 		    $('html, body').animate({
 		        scrollTop: $('#top').offset().top

@@ -26,6 +26,7 @@ function setup() {
 		'secondary_nav_4' => __('Secondary Navigation 4', 'sage'),
 		'secondary_nav_5' => __('Secondary Navigation 5', 'sage'),
 		'secondary_nav_6' => __('Secondary Navigation 6', 'sage'),
+		//'counsellors_nav' => __('Counsellors Navigation', 'sage'),
 	)
   );
 
