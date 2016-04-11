@@ -25,6 +25,16 @@
 	.cta_button {
 		
 		max-width: rem-calc(280px) !important;	
+		display: block;
+		margin: rem-calc(20px) auto 0px;
+	}
+	
+	&.block_row_bottom {
+		
+		.cta_button {
+			
+			margin: 0px;
+		}
 	}
 	
 	@include mappy-bp($tab) {
@@ -64,6 +74,16 @@
 		@include mappy-bp($desk) {
 			
 			font-size: rem-calc(32px);
+		}
+		
+		a {
+			color: white;
+			text-decoration: none;
+			text-shadow: none;
+			
+			&:hover, &:focus {
+				text-decoration: underline;
+			}
 		}
 	}
 	

@@ -66,7 +66,7 @@
 					) );
 					
 					// Remove last |
-					$wp_list_pages = preg_replace('/\|[^|]*$/', '', $wp_list_pages);
+					//$wp_list_pages = preg_replace('/\|[^|]*$/', '', $wp_list_pages);
 					//echo '2';
 				elseif($grandchild):
 					$child_of_value = ( $post->post_parent ? $post->post_parent : $post->ID );
@@ -84,7 +84,7 @@
 					) );
 					
 					// Remove last |
-					$wp_list_pages = preg_replace('/\|[^|]*$/', '', $wp_list_pages);
+					//$wp_list_pages = preg_replace('/\|[^|]*$/', '', $wp_list_pages);
 					//echo '3';
 				else:
 					
@@ -99,7 +99,7 @@
 					) );
 					
 					// Remove last |
-					$wp_list_pages = preg_replace('/\|[^|]*$/', '', $wp_list_pages);
+					//$wp_list_pages = preg_replace('/\|[^|]*$/', '', $wp_list_pages);
 					//echo '4';
 				endif;
 			} else {
@@ -114,7 +114,7 @@
 				) );
 				
 				// Remove last |
-				$wp_list_pages = preg_replace('/\|[^|]*$/', '', $wp_list_pages);
+				//$wp_list_pages = preg_replace('/\|[^|]*$/', '', $wp_list_pages);
 				//echo '5'; 
 			} //end else
 			
@@ -122,7 +122,7 @@
 		
 		if($wp_list_pages): ?>
 			<nav class="centre_text margin_bottom">
-				<ul class="double_single_block menu menu_font inline_list">
+				<ul class="double_single_block menu menu_font inline_list contextual_menu">
 					<?php echo $wp_list_pages; ?>
 				</ul>
 			</nav>	

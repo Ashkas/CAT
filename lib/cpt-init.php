@@ -33,7 +33,7 @@ function cptui_register_my_cpts() {
 		"capability_type" => "post",
 		"map_meta_cap" => true,
 		"hierarchical" => false,
-		"rewrite" => array( "slug" => "counsellor", "with_front" => true ),
+		"rewrite" => array( "slug" => "counsellors", "with_front" => true ),
 		"query_var" => true,
 				
 		"supports" => array( "title", "editor", "excerpt", "revisions", "thumbnail", "author" ),		
@@ -61,8 +61,8 @@ function cptui_register_my_taxes() {
 		"parent_item" => 'Parent Technique',
 		"parent_item_colon" => 'Parent Technique:',
 		"search_items" => "Search Techniques",
-		"popular_items" => 'Popular Techniques',
-		"separate_items_with_commas" => 'Separate techniques with commas',
+		"popular_items" => Null,
+		"separate_items_with_commas" => Null,
 		"add_or_remove_items" => "Add or remove techniques",
 		"choose_from_most_used" => 'Choose from most used techniques',
 		"not_found" => "No techniques found",
@@ -74,7 +74,7 @@ function cptui_register_my_taxes() {
 		"label" => "Techniques",
 		"show_ui" => true,
 		"query_var" => true,
-		"rewrite" => array( 'slug' => 'technique', 'with_front' => true ),
+		"rewrite" => array( 'slug' => 'counselling-techniques', 'with_front' => true ),
 		"show_admin_column" => false,
 	);
 	register_taxonomy( "technique", array( "counsellor" ), $args );
@@ -106,7 +106,7 @@ function cptui_register_my_taxes() {
 		"label" => "Specialties",
 		"show_ui" => true,
 		"query_var" => true,
-		"rewrite" => array( 'slug' => 'specialty', 'with_front' => true ),
+		"rewrite" => array( 'slug' => 'counselling-types', 'with_front' => true ),
 		"show_admin_column" => false,
 	);
 	register_taxonomy( "specialty", array( "counsellor" ), $args );

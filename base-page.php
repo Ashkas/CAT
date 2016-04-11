@@ -32,6 +32,36 @@ endif;  //function_exists
     <div role="document" id="page">
 	     <?php get_template_part( 'templates/page', 'header' ); ?>
 		 	<div class="wrap container">
+			 	
+			 	<?php if ( is_page_template( 'page-technique.php' )  || is_page_template( 'page-specialty.php')): ?>
+					<div class="centre_text border_bottom margin_bottom">
+					    <ul class="double_single_block menu menu_font inline_list contextual_menu">
+						    <li><a href="<?php echo get_post_type_archive_link( 'counsellor' ); ?>" title="View all Counsellors">All Counsellors</a></li>
+							<?php if(is_page_template( 'page-technique.php' )): 
+							
+								$nav_args = array( 
+									'theme_location'  => 'secondary_nav_5',
+									'container'       => '%3$s',
+									'items_wrap' => '%3$s',
+								);
+							
+							elseif(is_page_template( 'page-specialty.php')):
+								
+								$nav_args = array( 
+									'theme_location'  => 'secondary_nav_4',
+									'container'       => '%3$s',
+									'items_wrap' => '%3$s',
+								);
+								
+							endif;
+								
+								// Display the nav menu
+								wp_nav_menu($nav_args);
+							?>   
+					    </ul>
+				    </div>
+				<?php endif; //is_page_template ?>
+			 	
 		    	<div class="content row">
 		        	<main class="main big_margin_bottom" role="main">
 						<?php include Wrapper\template_path(); ?>
@@ -143,7 +173,7 @@ endif;  //function_exists
 						
 						$cta_button = get_cta_link_big('View Profile',$link); ?>
 						
-						<div class="block_row big_margin_bottom">
+						<div class="block_row block_row_bottom big_margin_bottom">
 							<div class="col-sm-7 col-md-8 block_text">
 								<?php echo '<h2 class="step_title_alt margin_bottom"><span class="not_bold block small_margin_bottom">Looking for a Counsellor?</span>';
 								echo 'Find out how '.$name.' can help you</h2>';

@@ -9,7 +9,7 @@
 	$c_title = get_field('counsellor_title');
 ?>
 
-<article class="col-sm-6 col-md-4 col-lg-3 big_margin_bottom grid_item">
+<article class="col-sm-6 col-md-4 big_margin_bottom grid_item">
 	
 	<div <?php post_class(); ?>>
 		<?php if(get_the_post_thumbnail($post->ID)): ?>

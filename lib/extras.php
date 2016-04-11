@@ -58,6 +58,20 @@ add_action('init',  __NAMESPACE__ . '\\custom_page_excerpts');
     }
     return $templates; // Return our modified array with base-$cpt.php at the front of the queue
   }
- 
- 
+
+// Add a wrapper around the oEmbed automatically
+// http://wordpress.stackexchange.com/questions/162565/adding-a-wrapper-to-the-youtube-embed-automatically
+/*
+add_filter('oembed_dataparse','oembed_youtube_add_wrapper',10,3);
+function oembed_youtube_add_wrapper($return, $data, $url) {
+    if ($data->provider_name == 'YouTube' || $data->provider_name == 'Vimeo') {
+        return "<div class='embed_container'>{$return}</div>";
+    } else {
+        return $return;
+    }
+}
+*/
+
+
+
  ?>

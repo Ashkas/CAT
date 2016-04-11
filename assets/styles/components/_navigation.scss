@@ -30,8 +30,25 @@
 	
 	&.contextual_menu {
 	
-		font-size: 90%;
-		font-family: $titleFont;
-		@include block-border;
+		//font-size: 90%;
+		//font-family: $titleFont;
+		//@include block-border;
+		
+		li {
+			
+			border-right: 1px solid $verylightgrey;
+			padding-right: rem-calc(6px);
+			
+			&:last-child {
+				
+				border-right: none;
+			}
+			
+			&.current-menu-item {
+				
+				font-weight: bold;
+			}
+		}
 	}
 }
+

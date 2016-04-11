@@ -325,6 +325,11 @@ button {
 		margin-top: rem-calc(5px);
 	}
 	
+	// One checkbox and label per line
+	.wpcf7-list-item {
+		display: block;
+	}
+	
 	.wpcf7-captchac, .infusion-captcha {
 		width: auto;
 		margin-bottom: rem-calc(5px);

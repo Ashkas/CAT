@@ -207,7 +207,7 @@
 	}
 	
 	&:hover, &:focus {
-		background: $alt-colour;
+		background: $main-colour;
 		color: white;
 		text-decoration: none;
 	}
@@ -237,6 +237,24 @@
 		text-decoration: none;
 	}
 }
+
+@mixin cta-button-alt-2 {
+	
+	@include button;
+	
+	&:link, &:visited {
+		background: $alt-colour;
+		color: white;	
+		text-shadow: none;
+		
+	}
+	
+	&:hover, &:focus {
+		background: $main-colour;
+		text-decoration: none;
+	}
+}
+
 
 /* ==========================================================================
    Flexbox from - https://github.com/mastastealth/sass-flex-mixin/blob/master/flex.scss

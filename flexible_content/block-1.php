@@ -10,6 +10,7 @@ if( have_rows('content_blocks', 'option') && is_home() ):
 		if( (get_row_layout() == 'step_block')):
 
 			$block_title = get_sub_field('block_title');
+			$block_title_link = get_sub_field('block_title_link');
 			$blocks = get_sub_field('blocks');
 				
 			if(get_sub_field('blocks')): ?>
@@ -18,7 +19,11 @@ if( have_rows('content_blocks', 'option') && is_home() ):
 						<div class="big_margin_top">
 							<?php if($block_title): ?>
 								<div class="big_margin_bottom">
-									<h2 class="home_title"><?php echo $block_title; ?></h2>
+									<?php if($block_title_link): ?>
+										<h2 class="home_title"><a href="<?php echo $block_title_link; ?>" title="<?php  echo $block_title; ?>" class="alt_white"><?php  echo $block_title; ?></a></h2>
+									<?php else: ?>
+										<h2 class="home_title"><?php  echo $block_title; ?></h2>
+									<?php endif; ?>
 								</div>
 							<?php endif;
 								
@@ -38,12 +43,11 @@ if( have_rows('content_blocks', 'option') && is_home() ):
 									$small_image_open = '<div class="margin_auto">';
 									$small_image_close = '</div>';
 								endif;
+								
 								$add_cta_button = get_sub_field('add_cta_button');
 								if($add_cta_button):
-									$button_title = get_sub_field('cta_button_title');
-									$button_url = get_sub_field('cta_button_url');
-									$button = '<p><a class="cta_button" href="'.$button_url.'">'.$button_title.'</a></p>';
-								endif; 
+									$block_url = get_sub_field('cta_button_url');
+								endif;
 								$get_meta = get_post_meta($image);
 								?>
 								
@@ -51,10 +55,12 @@ if( have_rows('content_blocks', 'option') && is_home() ):
 									<?php // if else on odds and evens
 									if($counter % 2 == 0) : ?>
 										<div class="col-sm-6 block_text">
-		<!-- 								<div class="col-md-9 col-lg-8"> -->
-											<?php echo '<h3 class="step_title margin_bottom">'.$title.'</h3>'; ?>
-											<?php echo '<p>'.$text.'</p>'; ?>
-		<!-- 								</div> -->
+											<?php if($block_url):
+												echo '<h3 class="step_title margin_bottom"><a href="'.$block_url.'" title="'.$title.'">'.$title.'</a></h3>';
+											else :
+												echo '<h3 class="step_title margin_bottom">'.$title.'</h3>';
+											endif;
+											echo '<p>'.$text.'</p>'; ?>
 										</div>
 										<div class="col-sm-6 block_image margin_bottom">
 											<?php echo $small_image_open.do_free_height_picturefill($image).$small_image_close; ?>
@@ -64,16 +70,17 @@ if( have_rows('content_blocks', 'option') && is_home() ):
 											<?php echo $small_image_open.do_free_height_picturefill($image).$small_image_close;  ?>
 										</div>
 										<div class="col-sm-6 block_text">
-		<!-- 								<div class="col-md-9 col-lg-8"> -->
-											<?php echo '<h3 class="step_title margin_bottom">'.$title.'</h3>'; ?>
-											<?php echo '<p>'.$text.'</p>'; ?>
-											<?php if($add_cta_button) echo $button; ?>
-		<!-- 								</div> -->
+											<?php if($block_url):
+												echo '<h3 class="step_title margin_bottom"><a href="'.$block_url.'" title="'.$title.'">'.$title.'</a></h3>';
+											else :
+												echo '<h3 class="step_title margin_bottom">'.$title.'</h3>';
+											endif;
+											echo '<p>'.$text.'</p>'; ?>
 										</div>
 									<?php endif; ?>
 								</div>
 								
-							<?php $counter++; endwhile;?> 
+							<?php unset($block_url); $counter++; endwhile;?> 
 						</div>
 					</div>
 				</div>
@@ -165,7 +172,7 @@ if( have_rows('content_blocks', 'option') && is_home() ):
 			
 			$block_title = get_sub_field('title');
 			$url = get_sub_field('url');
-			$cta_button = get_cta_link_big($block_title,$url);
+			$cta_button = get_cta_link_big_2($block_title,$url);
 			$padding_above = get_sub_field('padding_above');
 			$padding_below = get_sub_field('padding_below');
 			
@@ -275,11 +282,16 @@ elseif( have_rows('content_blocks') && !is_home() ):
 		if( (get_row_layout() == 'step_block')):
 
 			$block_title = get_sub_field('block_title');
+			$block_title_link = get_sub_field('block_title_link');
 			$blocks = get_sub_field('blocks');
 			
 			if($block_title): ?>
 				<div class="big_margin_bottom">
-					<h2 class="home_title"><?php echo $block_title; ?></h2>
+					<?php if($block_title_link): ?>
+						<h2 class="home_title"><a href="<?php echo $block_title_link; ?>" title="<?php  echo $block_title; ?>" class="alt_white"><?php  echo $block_title; ?></a></h2>
+					<?php else: ?>
+						<h2 class="home_title"><?php  echo $block_title; ?></h2>
+					<?php endif; ?>
 				</div>
 			<?php endif;
 				
@@ -386,9 +398,17 @@ elseif( have_rows('content_blocks') && !is_home() ):
 		elseif( (get_row_layout() == 'video_block')):
 			
 			$block_title = get_sub_field('title');
-			$video = get_sub_field('video_url'); ?>
+			$video = get_sub_field('video_url'); 
 			
-			<div class="coloured_background_2">
+			if(is_singular('counsellor')):
+				$coloured_background = 'coloured_background_1';
+			else:
+				$coloured_background = 'coloured_background_2';
+			endif;
+			
+			?>
+			
+			<div class="<?php echo $coloured_background; ?>">
 				<div class="container">
 					<div class="big_margin_top">
 				

@@ -6,6 +6,10 @@ ul.cta_buttons {
 	li {
 		list-style-type: none;
 	}
+	
+	li.single_button {
+		margin-right: 0px !important;
+	}
 }
 
 .cta_button {
@@ -14,6 +18,10 @@ ul.cta_buttons {
 
 .cta_button_alt {
 	@include cta-button-alt;	
+}
+
+.cta_button_alt_2 {
+	@include cta-button-alt-2;	
 }
 
 .button_row {

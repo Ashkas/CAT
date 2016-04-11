@@ -109,6 +109,18 @@ a {
 			color: $main-colour;
 		}
 	}
+	
+	&.alt_white {
+		
+		&:link, &:visited {
+			color: white;
+			text-shadow: none;
+		}
+		
+		&:hover, &:focus {
+			color: white;
+		}
+	}
 }
 
 dl {
@@ -132,9 +144,9 @@ dl {
 }
 
 
-ul {
+ul, ol {
 	
-	padding: 0px 0px rem-calc(10px) rem-calc(18px);
+	padding: 0px 0px rem-calc(10px) rem-calc(20px);
 	margin: 0px;
 	
 	li {
@@ -261,6 +273,11 @@ blockquote {
 		padding: rem-calc(4px) 0px rem-calc(-4px);
 		border-top: 2rem solid white;
 		border-bottom: 2rem solid white;
+		
+		&.alt {
+			
+			border-bottom: 0.5rem solid white;
+		}
 		
 		&:first-child {
 			border-top: none !important;

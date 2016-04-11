@@ -32,6 +32,10 @@
 			
 		margin: rem-calc(20px) 0px;
 		
+		h1 {
+			line-height: 1em;
+		}
+		
 	}
 	
 	@include mappy-bp($tab){
@@ -43,11 +47,24 @@
 		
 		.page-header {
 			
-			margin-left: rem-calc(30px);
+			margin-top: 0px;
+			//margin-left: rem-calc(20px);
 			margin-bottom: 0px;
 			
 			h1 {
 				text-align: left;
+			}
+		}
+	}
+	
+	@include mappy-bp($desk){
+		
+		.page-header {
+			//margin-left: rem-calc(30px);
+			margin-bottom: 0px;
+			
+			h1 {
+				font-size: rem-calc(42px);
 			}
 		}
 	}

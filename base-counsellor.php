@@ -33,8 +33,7 @@ endif;  //function_exists
 	    
 	    <?php if(is_single()): ?>
 		 	<div class="wrap container" itemscope itemtype="http://data-vocabulary.org/Person">
-			 	
-			 	<div class="centre_text border_bottom">
+			 	<div class="centre_text border_bottom small_margin_bottom">
 				    <ul class="inline_list menu">
 					    <li><a href="<?php echo get_post_type_archive_link( 'counsellor' ); ?>" title="View all Counsellors">All Counsellors</a></li>
 				    </ul>
@@ -52,45 +51,7 @@ endif;  //function_exists
 		    	</div><!-- /.content -->
 		    </div><!-- /.wrap -->
 		    
-		    <?php include(locate_template( 'flexible_content/block-1.php' ));  
-			
-			if($team_blocks):
-				shuffle($team_blocks);
-				$team_counter = 1;
-				
-				// change background colour if set
-				if($team_block_alt_colour):
-					$coloured_background = 'coloured_background_2';
-				else:
-					$coloured_background = 'coloured_background_1';
-				endif;
-				
-				echo '<div class="'.$coloured_background.'"><div class="container"><div class="big_margin_top">';
-					foreach($team_blocks as $team_block):
-						$name = $team_block['name'];
-						$link = $team_block['link'];
-						$image_id = $team_block['image'];
-						$medium = wp_get_attachment_image_src($image_id,'medium');
-						$image = '<img src="'.$medium[0].'" alt="'.$name.'">';
-						
-						$cta_button = get_cta_link_big('View Profile',$link); ?>
-						
-						<div class="block_row big_margin_bottom">
-							<div class="col-sm-7 col-md-8 block_text">
-								<?php echo '<h2 class="step_title_alt margin_bottom"><span class="not_bold block small_margin_bottom">Looking for a Counsellor?</span>';
-								echo 'Find out how '.$name.' can help you</h2>';
-								echo $cta_button; ?>
-							</div>
-							<div class="col-sm-5 col-md-4 block_image margin_bottom">
-								<?php if($image_id): echo $image; endif; ?>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-						
-						<?php if($team_counter == 1): break; endif;
-					endforeach;
-				echo '</div></div></div>';
-			endif;   
+		    <?php include(locate_template( 'flexible_content/block-1.php' ));   
 			
 		endif; //is_single
 		
@@ -98,10 +59,33 @@ endif;  //function_exists
 			
 			<div class="wrap container">
 				
-				<?php if(is_tax()): ?>
+				<?php if(is_tax()): 
+					$term = get_queried_object();
+				?>
 					<div class="centre_text border_bottom">
-					    <ul class="inline_list menu contextual_menu">
+					    <ul class="double_single_block menu menu_font inline_list contextual_menu">
 						    <li><a href="<?php echo get_post_type_archive_link( 'counsellor' ); ?>" title="View all Counsellors">All Counsellors</a></li>
+							<?php if(is_tax('technique')): 
+							
+								$nav_args = array( 
+									'theme_location'  => 'secondary_nav_5',
+									'container'       => '%3$s',
+									'items_wrap' => '%3$s',
+								);
+							
+							elseif(is_tax('specialty')):
+								
+								$nav_args = array( 
+									'theme_location'  => 'secondary_nav_4',
+									'container'       => '%3$s',
+									'items_wrap' => '%3$s',
+								);
+								
+							endif;
+								
+								// Display the nav menu
+								wp_nav_menu($nav_args);
+							?>   
 					    </ul>
 				    </div>
 				<?php endif; ?>

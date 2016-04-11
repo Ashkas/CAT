@@ -45,16 +45,16 @@ if( $banners ): ?>
     		<div class="container">
 				<div class="banner_cta">
 					<?php if($tagline): ?>
-						<h2 class="banner_tagline big_margin_bottom"><?php echo $tagline; ?></h2>
+						<h1 class="banner_tagline big_margin_bottom"><?php echo $tagline; ?></h1>
 					<?php endif; ?>
 					<ul class="cta_buttons">
 						<?php $counter = 1;
 						while(has_sub_field('homepage_banner_cta', 'option')):
 							
 							if($counter == 1):
-								$link = get_cta_link_alt(get_sub_field('title'),get_sub_field('url'), 'big_button');
-							else:
 								$link = get_cta_link(get_sub_field('title'),get_sub_field('url'), 'big_button');
+							else:
+								$link = get_cta_link_alt(get_sub_field('title'),get_sub_field('url'), 'big_button');
 							endif;
 							
 							if($link): ?>

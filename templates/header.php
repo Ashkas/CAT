@@ -10,21 +10,32 @@
 		$header_logo = wp_get_attachment_image_src($get_header_logo,'full');		
 		
 		$phone_number = get_field('site_phone_number', 'option');
-	endif;
 	
-	if(get_field('header_cta', 'option')):
-		while(has_sub_field('header_cta', 'option')):
-			$cta_button = get_cta_link(get_sub_field('header_cta_title'),get_sub_field('header_cta_url'));
-		endwhile;
+	
+		if(get_field('header_cta', 'option')):
+			while(has_sub_field('header_cta', 'option')):
+				$cta_button = get_cta_link(get_sub_field('header_cta_title'),get_sub_field('header_cta_url'));
+			endwhile;
+		endif;
+	
 	endif;
 ?>
 
+<!-- Google Tag Manager -->
+	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TPSBPL"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-TPSBPL');</script>
+<!-- End Google Tag Manager -->
 
 <header class="header" role="banner" id="top">
 	<div class="topbar">
 		<div class="container">
 			<small class="float_left text_left header_phone"><a href="tel:<?php echo $phone_number; ?>" class="phone_link"><?php echo $phone_number; ?></a></small>
-			<small class="float_right text_right links"><a href="<?php echo $home_url; ?>/users/sign_up" title="Sign up to Counselling at Home Account">Sign up</a> <a href="<?php echo $home_url; ?>/login" title="Login to your Counselling at Home Account">Login</a> <?php if($cta_button) echo $cta_button?></small>				
+			<small class="float_right text_right links"><a href="https://directory.counsellingathome.com/users/sign_up/consumer" title="Sign Up to Counselling at Home Account" target="_blank">Sign Up</a> <a href="https://directory.counsellingathome.com/users/sign_in" title="Login to your Counselling at Home Account" target="_blank">Login</a> <?php if($cta_button) echo $cta_button?></small>				
 			<div class="clearfix"></div>
 		</div> <!-- container -->
 	</div> <!-- topbar -->
