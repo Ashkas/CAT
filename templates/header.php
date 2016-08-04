@@ -35,7 +35,7 @@
 	<div class="topbar">
 		<div class="container">
 			<small class="float_left text_left header_phone"><a href="tel:<?php echo $phone_number; ?>" class="phone_link"><?php echo $phone_number; ?></a></small>
-			<small class="float_right text_right links"><a href="https://directory.counsellingathome.com/users/sign_up/consumer" title="Sign Up to Counselling at Home Account" target="_blank">Sign Up</a> <a href="https://directory.counsellingathome.com/users/sign_in" title="Login to your Counselling at Home Account" target="_blank">Login</a> <?php if($cta_button) echo $cta_button?></small>				
+			<small class="float_right text_right links"><!-- <a href="https://counsellingathome.yondo.com/login" title="Sign Up to Counselling at Home Account" target="_blank">Sign Up</a> <a href="https://portal.counsellingathome.com" title="Login to your Counselling at Home Account" target="_blank">Login</a> --> <?php if($cta_button) echo $cta_button?></small>				
 			<div class="clearfix"></div>
 		</div> <!-- container -->
 	</div> <!-- topbar -->

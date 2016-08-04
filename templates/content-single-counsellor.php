@@ -18,7 +18,7 @@
 			
 				if($contact):
 					
-					echo '<li><a href="'.$contact.'" title="Contact '.$get_title.'" class="cta_button cta_button_alt big_button margin_bottom" target="_blank">Contact</a></li>';
+					echo '<li><a href="'.$contact.'" title="Contact '.$get_title.'" class="cta_button cta_button_alt button margin_bottom" target="_blank">Contact</a></li>';
 					
 				endif;
 				
@@ -28,7 +28,7 @@
 						$single_button = 'single_button';
 					}
 					
-					echo '<li class="'.$single_button.'"><a href="'.$request.'" title="Book online session with '.$get_title.'" class="cta_button big_button">Book Online Session</a></li>';
+					echo '<li class="'.$single_button.'"><a href="'.$request.'" title="Book online session with '.$get_title.'" class="cta_button button">Book Now</a></li>';
 					
 				endif;
 				
@@ -48,7 +48,7 @@
 			
 				if($contact):
 					
-					echo '<li><a href="'.$contact.'" title="Contact '.$get_title.'" class="cta_button cta_button_alt big_button margin_bottom" target="_blank">Contact</a></li>';
+					echo '<li><a href="'.$contact.'" title="Contact '.$get_title.'" class="cta_button cta_button_alt button margin_bottom" target="_blank">Contact</a></li>';
 					
 				endif;
 				
@@ -58,7 +58,7 @@
 						$single_button = 'single_button';
 					}
 					
-					echo '<li class="'.$single_button.'"><a href="'.$request.'" title="Book online session with '.$get_title.'" class="cta_button big_button">Book Online Session</a></li>';
+					echo '<li class="'.$single_button.'"><a href="'.$request.'" title="Book online session with '.$get_title.'" class="cta_button button">Book Now</a></li>';
 					
 				endif;
 				

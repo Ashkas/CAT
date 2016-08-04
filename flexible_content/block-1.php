@@ -48,8 +48,7 @@ if( have_rows('content_blocks', 'option') && is_home() ):
 								if($add_cta_button):
 									$block_url = get_sub_field('cta_button_url');
 								endif;
-								$get_meta = get_post_meta($image);
-								?>
+								$get_meta = get_post_meta($image); ?>
 								
 								<div class="row block_row big_margin_bottom">
 									<?php // if else on odds and evens

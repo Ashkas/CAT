@@ -38,6 +38,7 @@ function setup() {
   add_filter( 'jpeg_quality', create_function( '', 'return 75;' ) );
 
   // set_post_thumbnail_size(150, 150, false);
+  add_image_size('profile-thumb', 480, 360, array('center', 'center'));
   add_image_size('featured-small', 480, 270, array('center', 'center'));
   add_image_size('featured-medium', 820, 461, array('center', 'center'));
   add_image_size('page-featured-medium', 820, 350, array('center', 'center'));

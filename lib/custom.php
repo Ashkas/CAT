@@ -393,7 +393,7 @@ add_filter( 'get_the_archive_title', function ($title) {
 	
 	    } elseif (is_post_type_archive('counsellor')){
 	        
-	        $title = 'Our Counsellors';
+	        $title = 'Choose Your Counsellor';
 	        
 	    } elseif (is_post_type_archive()){
 	        

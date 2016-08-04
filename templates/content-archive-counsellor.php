@@ -1,7 +1,10 @@
 <?php
 		
 	// Featured image 
-	$featured_image = do_free_height_picturefill(get_post_thumbnail_id());
+	//$featured_image = do_feature_picturefill(get_post_thumbnail_id(), $link = NULL, $size1="0", $size2="600", $size3="600", $size4="600");
+	
+	$featured_image = wp_get_attachment_image_src(get_post_thumbnail_id(),'profile-thumb');
+	$alt = get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true);
 	
 	// Title
 	$get_title = get_the_title();
@@ -15,7 +18,7 @@
 		<?php if(get_the_post_thumbnail($post->ID)): ?>
 			<div class="small_margin_bottom">
 				<a href="<?php the_permalink(); ?>" title="Information about <?php echo $get_title; ?>">
-					<?php echo $featured_image; ?>
+					<img src="<?php echo $featured_image[0]; ?>" alt="<?php echo $alt; ?>">
 				</a>
 			</div>
 		<?php endif; ?>

@@ -9,7 +9,8 @@ if(function_exists('get_field')):
 	$registration = get_field('counsellor_registration');
 endif;
 	
-$featured_image = do_free_height_picturefill(get_post_thumbnail_id());
+$featured_image = wp_get_attachment_image_src(get_post_thumbnail_id(),'profile-thumb');
+$alt = get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true);
 
 if(is_single()):
 
@@ -21,7 +22,7 @@ if(is_single()):
 		    	<div class="content margin_top margin_bottom">
 			    	<div class="col-md-10 col-lg-9 margin_auto content no_padding">
 				    	<div class="col-sm-3 no_padding">
-					    	<?php echo $featured_image; ?>
+					    	<img src="<?php echo $featured_image[0]; ?>" alt="<?php echo $alt; ?>">
 				    	</div>
 				    	<div class="col-sm-9">
 							<div class="page-header">
